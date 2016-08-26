@@ -7,7 +7,9 @@ The purpose of the launcher is to provide the users the ability to download, ins
 
 ![Overview](https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/overview.png)
 
-![Minecraft launched](http://i.imgur.com/fzTqsC4.png)
+![Minecraft launched](https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/run.png)
+
+![Minecraft launched](https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/run.png "Minecraft launched")
 
 If you want to embed images, this is how you do it:
 
