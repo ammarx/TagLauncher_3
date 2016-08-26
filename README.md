@@ -3,5 +3,10 @@ The purpose of the launcher is to provide the users the ability to download, ins
 
 ```Screenshots```
 
-![Minecraft launched](https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/run.png "Minecraft launched")
+![alt text](https://github.com/ammarx/TagLauncher_3/raw/master/_html_/run.png "Minecraft launched")
+
+![alt text](https://github.com/ammarx/TagLauncher_3/raw/master/_html_/install.png "New version installation")
+
+![alt text](https://github.com/ammarx/TagLauncher_3/raw/master/_html_/overview.png "Overview")
+
 
