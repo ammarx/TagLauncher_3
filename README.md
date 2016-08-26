@@ -4,6 +4,5 @@ The purpose of the launcher is to provide the users the ability to download, ins
 ```Screenshots```
 
 Minecraft launched:
-![](https://github.com/ammarx/TagLauncher_3/raw/master/_html_/run.png)
-
+![](https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/run.png)
 
