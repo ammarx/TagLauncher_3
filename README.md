@@ -10,3 +10,5 @@ Installing a new version:
 Game running:
 ![](https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/run.png)
 
+# Release
+TagLauncher - v0.1-alpha - https://github.com/ammarx/TagLauncher_3/releases/tag/v0.1-alpha
