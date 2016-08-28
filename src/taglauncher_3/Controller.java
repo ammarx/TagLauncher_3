@@ -18,7 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -104,22 +103,24 @@ public class Controller implements Initializable {
             while (true) {
                 try {
                     Platform.runLater(() -> {
-                        status.setText(API.getRunLogs());
+                        status.setText(API.getLog());
                     });
 
                     Thread.sleep(10);
 
-                    if (API.getRunLogs().equals("[rl] Minecraft Initialized!")) {
+                    if (API.getLog().equals("[rl] Minecraft Initialized!")) {
+                        API.dumpLogs();
                         System.exit(0);
                         return;
-                    } else if (API.getRunLogs().equals("[rl] Minecraft Corruption found!")) {
+                    } else if (API.getLog().equals("[rl] Minecraft Corruption found!")) {
                         Platform.runLater(() -> {
-                            status.setText(API.getRunLogs());
+                            status.setText(API.getLog());
                             Alert alert = new Alert(AlertType.ERROR);
                             alert.setTitle("Unable to start Minecraft!");
                             alert.setHeaderText("Version: " + (String) version.getValue() + " failed to initialize!");
                             alert.setContentText("The game failed to initialize as data corruption \nwas found! Press re-Download game with \n*Force Download* checked");
                             alert.showAndWait();
+                            API.dumpLogs();
                             //refresh versions list
 
                             //System.out.println(API.getRunLogs());
@@ -172,7 +173,7 @@ public class Controller implements Initializable {
 
                     Platform.runLater(() -> {
 
-                        status.setText(API.getDownloadLogs());
+                        status.setText(API.getLog());
 
                         //System.out.println(API.getRunLogs());
                     });
@@ -183,13 +184,14 @@ public class Controller implements Initializable {
                         //stop = false;
                         //msgbox to user
                         Platform.runLater(() -> {
-                            status.setText(API.getDownloadLogs());
+                            status.setText(API.getLog());
                             Alert alert = new Alert(AlertType.INFORMATION);
                             alert.setTitle("Download Complete!");
                             alert.setHeaderText(null);
                             alert.setContentText("Version: " + (String) installversionList.getValue() + " has been installed!");
 
                             alert.showAndWait();
+                            API.dumpLogs();
                             //refresh versions list
                             version.getItems().removeAll(version.getItems());
 
