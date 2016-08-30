@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -13,16 +14,17 @@
             <Label id="status" fx:id="status" text="Status" />
         </items>
       </ToolBar>
-      <SplitPane dividerPositions="0.38688946015424164" layoutX="8.0" layoutY="22.0" prefHeight="275.0" prefWidth="780.0">
+      <SplitPane dividerPositions="0.38688946015424164" layoutX="8.0" layoutY="22.0" prefHeight="287.0" prefWidth="780.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="324.0">
                <children>
                   <TextField fx:id="username" layoutX="94.0" layoutY="68.0" promptText="username" />
-                  <Button id="launch" fx:id="launch" layoutX="94.0" layoutY="137.0" mnemonicParsing="false" onAction="#lunachMineCraft" prefHeight="26.0" prefWidth="171.0" text="Luanch" />
+                  <Button id="launch" fx:id="launch" layoutX="94.0" layoutY="137.0" mnemonicParsing="false" onAction="#lunachMineCraft" prefHeight="26.0" prefWidth="171.0" text="Launch" />
                   <ComboBox id="version" fx:id="version" layoutX="95.0" layoutY="101.0" prefHeight="26.0" prefWidth="171.0" promptText="select version" />
                   <Label layoutX="10.0" layoutY="75.0" text="Username" />
                   <Label layoutX="26.0" layoutY="106.0" text="Version" />
                </children>
+
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -31,9 +33,9 @@
                   <CheckBox id="forceInst" fx:id="forceInst" layoutX="137.0" layoutY="128.0" mnemonicParsing="false" text="Force Download" />
                   <Label id="versionType" fx:id="versionType" layoutX="140.0" layoutY="197.0" text="Release - Beta - Alpha" />
                   <Label layoutX="93.0" layoutY="197.0" text="Type" />
-                  <Label layoutX="8.0" layoutY="99.0" text="download version" />
+                  <Label layoutX="8.0" layoutY="99.0" text="Download version" />
                </children>
-            </AnchorPane>
+                           </AnchorPane>
         </items>
       </SplitPane>
    </children>
