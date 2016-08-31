@@ -137,7 +137,7 @@ public class Controller implements Initializable {
 
         ExecutorService executor = Executors.newCachedThreadPool();
         executor.submit(() -> {
-            API.downloadProfile((String) version.getValue());
+            API.downloadProfile((String) username.getText());
             API.syncVersions();
             API.downloadMinecraft((String) version.getValue(), false); //force download flag
             API.runMinecraft(username.getText(), (String) version.getValue());
