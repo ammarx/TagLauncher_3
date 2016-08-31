@@ -12,7 +12,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.util.Hashtable;
-import java.util.Optional;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
@@ -60,6 +59,19 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         tagapi_3.API_Interface API = new tagapi_3.API_Interface();
+        ExecutorService executor1 = Executors.newCachedThreadPool();
+        executor1.submit(() -> {
+            if (API.getUpdateStatus().equals("0"))
+            {
+                System.out.println("You are running the latest API version");
+            } else {
+                System.out.println("You are " + API.getUpdateStatus() + " versions behind");
+            }
+            return null;
+        });
+        executor1.shutdown();
+        
+        
         for (Object ob : API.getInstalledVersionsList()) {
             version.getItems().addAll(ob.toString());
 
