@@ -11,6 +11,8 @@ Game running:
 ![](https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/run.png)
 
 # Release
+TagLauncher - v0.3-alpha - https://github.com/ammarx/TagLauncher_3/releases/tag/v0.3-alpha
+
 TagLauncher - v0.2-alpha - https://github.com/ammarx/TagLauncher_3/releases/tag/v0.2-alpha
 
 TagLauncher - v0.1-alpha - https://github.com/ammarx/TagLauncher_3/releases/tag/v0.1-alpha
