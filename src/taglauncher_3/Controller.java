@@ -81,7 +81,8 @@ public class Controller implements Initializable {
         ExecutorService executor = Executors.newCachedThreadPool();
         executor.submit(() -> {
             installversionList.setDisable(true);
-
+            installGame.setDisable(true);
+            forceInst.setDisable(true);
             API.downloadVersionManifest();
 
             for (Object ob : API.getInstallableVersionsList()) {
@@ -102,7 +103,9 @@ public class Controller implements Initializable {
 
             }
             installversionList.setDisable(false);
-
+            installGame.setDisable(false);
+            forceInst.setDisable(false);
+            
             return null;
         });
         executor.shutdown();
