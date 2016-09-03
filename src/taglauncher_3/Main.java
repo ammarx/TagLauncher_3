@@ -24,7 +24,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
         
         Scene scene = new Scene(root);
-        stage.setTitle("TagLauncher - v0.3-alpha");
+        stage.setTitle("TagLauncher - v0.5-alpha");
         stage.setScene(scene);
         
         //-fx-background-color: transparent;
