@@ -6,13 +6,10 @@
 package taglauncher_3;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 /**
@@ -33,14 +30,12 @@ public class Main extends Application {
         //stage.initStyle(StageStyle.TRANSPARENT);
         //scene.setFill(Color.TRANSPARENT);
         stage.show();
-        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                for (int i = 0; i < 16; i++) {
-                    System.out.println("Created by Ammar Ahmad @ TagCraftMC");
-                }
-                stage.close();
-                System.exit(0);
+        stage.setOnCloseRequest((WindowEvent we) -> {
+            for (int i = 0; i < 16; i++) {
+                System.out.println("Created by Ammar Ahmad @ TagCraftMC");
             }
+            stage.close();
+            System.exit(0);
         });
 
     }
