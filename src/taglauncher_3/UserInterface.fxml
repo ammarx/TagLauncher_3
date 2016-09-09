@@ -10,35 +10,35 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane id="AnchorPane" prefHeight="386.0" prefWidth="803.0" style="" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taglauncher_3.Controller">
-   <children>
-      <ToolBar layoutY="261.0" prefHeight="40.0" prefWidth="521.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-        <items>
-            <Label id="status" fx:id="status" text="Status" />
-        </items>
-      </ToolBar>
-      <SplitPane dividerPositions="0.38688946015424164" layoutX="8.0" layoutY="22.0" prefHeight="287.0" prefWidth="780.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="324.0">
-               <children>
-                  <TextField fx:id="username" layoutX="94.0" layoutY="68.0" prefHeight="25.0" prefWidth="171.0" promptText="username" />
-                  <Button id="launch" fx:id="launch" layoutX="94.0" layoutY="137.0" mnemonicParsing="false" onAction="#lunachMineCraft" prefHeight="26.0" prefWidth="171.0" text="Launch" />
-                  <ComboBox id="version" fx:id="version" layoutX="95.0" layoutY="101.0" prefHeight="26.0" prefWidth="171.0" promptText="select version" />
-                  <Label layoutX="10.0" layoutY="75.0" text="Username" />
-                  <Label layoutX="26.0" layoutY="106.0" text="Version" />
-               </children>
+    <children>
+        <ToolBar layoutY="261.0" prefHeight="40.0" prefWidth="521.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <items>
+                <Label id="status" fx:id="status" text="Status" />
+            </items>
+        </ToolBar>
+        <SplitPane dividerPositions="0.38688946015424164" layoutX="8.0" layoutY="22.0" prefHeight="287.0" prefWidth="780.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="228.0" prefWidth="324.0">
+                    <children>
+                        <TextField fx:id="username" layoutX="94.0" layoutY="68.0" prefHeight="25.0" prefWidth="171.0" promptText="username" />
+                        <Button id="launch" fx:id="launch" layoutX="94.0" layoutY="137.0" mnemonicParsing="false" onAction="#lunachMineCraft" prefHeight="26.0" prefWidth="171.0" text="Launch" />
+                        <ComboBox id="version" fx:id="version" layoutX="95.0" layoutY="101.0" prefHeight="26.0" prefWidth="171.0" promptText="select version" />
+                        <Label layoutX="10.0" layoutY="75.0" text="Username" />
+                        <Label layoutX="26.0" layoutY="106.0" text="Version" />
+                    </children>
 
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-               <children>
-                  <Button id="installGame" fx:id="installGame" layoutX="140.0" layoutY="159.0" mnemonicParsing="false" onAction="#installGameBtn" text="Install Game" />
-                  <ComboBox id="installversionList" fx:id="installversionList" layoutX="137.0" layoutY="94.0" onAction="#updateType" prefHeight="26.0" prefWidth="254.0" promptText="select version to install" />
-                  <CheckBox id="forceInst" fx:id="forceInst" layoutX="137.0" layoutY="128.0" mnemonicParsing="false" text="Force Download" />
-                  <Label id="versionType" fx:id="versionType" layoutX="140.0" layoutY="197.0" text="Release - Beta - Alpha" />
-                  <Label layoutX="93.0" layoutY="197.0" text="Type" />
-                  <Label layoutX="8.0" layoutY="99.0" text="Download version" />
-               </children>
-                           </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <Button id="installGame" fx:id="installGame" layoutX="140.0" layoutY="159.0" mnemonicParsing="false" onAction="#installGameBtn" text="Install Game" />
+                        <ComboBox id="installversionList" fx:id="installversionList" layoutX="137.0" layoutY="94.0" onAction="#updateType" prefHeight="26.0" prefWidth="254.0" promptText="select version to install" />
+                        <CheckBox id="forceInst" fx:id="forceInst" layoutX="137.0" layoutY="128.0" mnemonicParsing="false" text="Force Download" />
+                        <Label id="versionType" fx:id="versionType" layoutX="140.0" layoutY="197.0" text="Release - Beta - Alpha" />
+                        <Label layoutX="93.0" layoutY="197.0" text="Type" />
+                        <Label layoutX="8.0" layoutY="99.0" text="Download version" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>
