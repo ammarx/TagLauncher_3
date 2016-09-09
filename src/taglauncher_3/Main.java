@@ -6,32 +6,43 @@
 package taglauncher_3;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 
 /**
  *
  * @author ammar
  */
 public class Main extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
-        
+
         Scene scene = new Scene(root);
         stage.setTitle("TagLauncher - v0.6-alpha");
         stage.setScene(scene);
-        
+
         //-fx-background-color: transparent;
         //stage.initStyle(StageStyle.TRANSPARENT);
         //scene.setFill(Color.TRANSPARENT);
-        
         stage.show();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                for (int i = 0; i < 16; i++) {
+                    System.out.println("Created by Ammar Ahmad @ TagCraftMC");
+                }
+                stage.close();
+                System.exit(0);
+            }
+        });
+
     }
 
     /**
@@ -40,5 +51,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
