@@ -24,8 +24,9 @@ public class Main extends Application {
 
         Scene scene = new Scene(root);
         stage.setTitle("TagLauncher - v0.7-alpha");
+        
+        stage.setResizable(false);
         stage.setScene(scene);
-
         //-fx-background-color: transparent;
         //stage.initStyle(StageStyle.TRANSPARENT);
         //scene.setFill(Color.TRANSPARENT);
