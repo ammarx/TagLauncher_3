@@ -8,8 +8,8 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="TagLauncher_3.jar" size="6227" download="eager" />
-    <jar href="lib/TagAPI_3.jar" size="53378" download="eager" />
+    <jar href="TagLauncher_3.jar" size="8216" download="eager" />
+    <jar href="lib/TagAPI_3.jar" size="59657" download="eager" />
     <jar href="lib/commons-io-2.5.jar" size="208696" download="eager" />
     <jar href="lib/json-20160212.jar" size="49176" download="eager" />
     <jar href="lib/json-simple-1.1.1.jar" size="23737" download="eager" />
