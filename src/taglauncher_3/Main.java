@@ -23,7 +23,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
 
         Scene scene = new Scene(root);
-        stage.setTitle("TagLauncher - v0.7-alpha");
+        stage.setTitle("TagLauncher - v0.8-alpha");
         
         stage.setResizable(false);
         stage.setScene(scene);
