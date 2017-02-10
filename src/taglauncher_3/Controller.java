@@ -157,6 +157,7 @@ public class Controller implements Initializable {
             API.downloadMinecraft((String) version.getValue(), false); //force download flag
             //API.setMemory("2G");
             //API.setVersionData(username.getText());
+            API.injectNetty();
             API.runMinecraft(username.getText(), (String) version.getValue());
             return null;
         });
