@@ -8,11 +8,13 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="TagLauncher_3.jar" size="8216" download="eager" />
-    <jar href="lib/TagAPI_3.jar" size="59657" download="eager" />
-    <jar href="lib/commons-io-2.5.jar" size="208696" download="eager" />
-    <jar href="lib/json-20160212.jar" size="49176" download="eager" />
-    <jar href="lib/json-simple-1.1.1.jar" size="23737" download="eager" />
+    <jar href="TagLauncher_3.jar" size="1047449" download="eager" />
+    <jar href="lib\HEX_MOD.jar" size="4879" download="eager" />
+    <jar href="lib\TagAPI_3.jar" size="65940" download="eager" />
+    <jar href="lib\commons-io-2.5.jar" size="208696" download="eager" />
+    <jar href="lib\json-20160212.jar" size="49176" download="eager" />
+    <jar href="lib\json-simple-1.1.1.jar" size="23737" download="eager" />
+    <jar href="lib\zt-zip-1.11.jar" size="105005" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="TagLauncher_3" >
     <param name="requiredFXVersion" value="8.0+"/>

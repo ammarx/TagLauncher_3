@@ -9,7 +9,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 
 /**
@@ -17,13 +19,26 @@ import javafx.stage.WindowEvent;
  * @author ammar
  */
 public class Main extends Application {
+    private static Stage launcherMainWindow;
 
+    private void setLauncherMainWindow(Stage stage) {
+        Main.launcherMainWindow = stage;
+    }
+
+    static public Stage getLauncherMainWindow() {
+        return Main.launcherMainWindow;
+    }
+    
     @Override
     public void start(Stage stage) throws Exception {
+        stage.getIcons().add(new Image(Main.class.getResourceAsStream("/taglauncher_3/css/images/icon.png" )));
+        stage.setTitle("The Primal Launcher - v0.8-alpha");
+        setLauncherMainWindow(stage);
         Parent root = FXMLLoader.load(getClass().getResource("UserInterface.fxml"));
 
         Scene scene = new Scene(root);
-        stage.setTitle("TagLauncher - v0.8-alpha");
+        scene.getStylesheets().add("taglauncher_3/css/dark.css");
+        stage.initStyle(StageStyle.UNDECORATED);
         
         stage.setResizable(false);
         stage.setScene(scene);
@@ -38,6 +53,9 @@ public class Main extends Application {
             stage.close();
             System.exit(0);
         });
+        
+        
+        
 
     }
 

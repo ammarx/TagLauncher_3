@@ -20,6 +20,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -27,6 +28,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  *
@@ -54,6 +57,12 @@ public class Controller implements Initializable {
     private Button installGame;
     @FXML
     private CheckBox forceInst;
+    @FXML
+    private Button minimize;
+    @FXML
+    private Button exit;
+    @FXML
+    private Button options;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -309,6 +318,23 @@ public class Controller implements Initializable {
 
         });
         t.start();
+    }
+
+    
+    @FXML
+    private void launchMinimize(ActionEvent event) {
+        Stage stage = Main.getLauncherMainWindow();
+        stage.setIconified(true);
+    }
+
+    @FXML
+    private void launchExit(ActionEvent event) {    
+        Stage stage = Main.getLauncherMainWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void launchOptions(ActionEvent event) {
     }
 
 }

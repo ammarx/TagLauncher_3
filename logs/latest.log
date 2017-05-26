@@ -1,0 +1,14 @@
+[18:26:16] [Client thread/INFO]: Setting user: dfdssddfs
+[18:26:18] [Client thread/WARN]: Skipping bad option: lastServer:
+[18:26:18] [Client thread/INFO]: LWJGL Version: 2.9.4
+[18:26:28] [Client thread/INFO]: Reloading ResourceManager: Default, TCMC - WW
+[18:26:29] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[18:26:30] [Thread-4/INFO]: Initializing LWJGL OpenAL
+[18:26:30] [Thread-4/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[18:26:30] [Thread-4/INFO]: OpenAL initialized.
+[18:26:30] [Sound Library Loader/INFO]: Sound engine started
+[18:26:34] [Client thread/INFO]: Created: 2048x2048 textures-atlas
+[18:26:38] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[18:26:40] [Client thread/INFO]: Stopping!
+[18:26:40] [Client thread/INFO]: SoundSystem shutting down...
+[18:26:40] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
