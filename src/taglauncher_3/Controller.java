@@ -16,11 +16,16 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -28,7 +33,9 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 /**
@@ -37,6 +44,17 @@ import javafx.stage.Window;
  */
 public class Controller implements Initializable {
 
+    private static Stage applicationOptionStage;
+        
+    private void setApplicationOptionStage(Stage stage) {
+        Controller.applicationOptionStage = stage;
+    }
+
+    static public Stage getApplicationOptionStage() {
+        return Controller.applicationOptionStage;
+    }
+    
+    
     private Label label;
     @FXML
     private TextField username;
@@ -335,6 +353,23 @@ public class Controller implements Initializable {
 
     @FXML
     private void launchOptions(ActionEvent event) {
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserOptions.fxml"));
+            Parent optionsGUI = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setTitle("The Options Menu");
+            Scene sceneOptions = new Scene(optionsGUI);
+            
+            stage.setScene(sceneOptions);
+            sceneOptions.getStylesheets().add("taglauncher_3/css/dark_options.css");
+            setApplicationOptionStage(stage);
+            stage.show();
+        } catch (IOException ex) 
+        {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
