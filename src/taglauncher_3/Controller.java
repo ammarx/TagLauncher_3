@@ -45,6 +45,8 @@ import javafx.stage.Window;
 public class Controller implements Initializable {
 
     private static Stage applicationOptionStage;
+    private double xOffset = 0;
+    private double yOffset = 0;
         
     private void setApplicationOptionStage(Stage stage) {
         Controller.applicationOptionStage = stage;
@@ -365,6 +367,17 @@ public class Controller implements Initializable {
             stage.setScene(sceneOptions);
             sceneOptions.getStylesheets().add("taglauncher_3/css/dark_options.css");
             setApplicationOptionStage(stage);
+            
+            sceneOptions.setOnMousePressed(event_ -> {
+                xOffset = stage.getX() - event_.getScreenX();
+                yOffset = stage.getY() - event_.getScreenY();
+            });
+            //
+            sceneOptions.setOnMouseDragged(event_ -> {
+                stage.setX(event_.getScreenX() + xOffset);
+                stage.setY(event_.getScreenY() + yOffset);
+            });
+            
             stage.show();
         } catch (IOException ex) 
         {

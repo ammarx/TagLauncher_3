@@ -60,13 +60,13 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="optionsResolution" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" text="Resolution:" />
-                        <RadioButton fx:id="optionsRamAllocation" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" text="Ram Allocation:" />
+                        <RadioButton fx:id="optionsResolution" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#_optionsResolution" text="Resolution:" />
+                        <RadioButton fx:id="optionsRamAllocation" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#_optionsRamAllocation" text="Ram Allocation:" />
                         <RadioButton fx:id="optionsBypassBlacklist" layoutX="10.0" layoutY="75.0" mnemonicParsing="false" text="Bypass Blacklist" />
-                        <TextField fx:id="optionsResolutionMin" layoutX="144.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Min" />
-                        <TextField fx:id="optionsRamAllocationMin" layoutX="144.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="-Xms" />
-                        <TextField fx:id="optionsResolutionMax" layoutX="273.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Max" />
-                        <TextField fx:id="optionsRamAllocationMax" layoutX="273.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="-Xmx" />
+                        <TextField fx:id="optionsResolutionMin" disable="true" layoutX="144.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Min" />
+                        <TextField fx:id="optionsRamAllocationMin" disable="true" layoutX="144.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="-Xms" />
+                        <TextField fx:id="optionsResolutionMax" disable="true" layoutX="273.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Max" />
+                        <TextField fx:id="optionsRamAllocationMax" disable="true" layoutX="273.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="-Xmx" />
                      </children>
                   </Pane>
                   <Pane prefHeight="3.0" prefWidth="390.0" styleClass="top_title_bar" />
@@ -90,10 +90,10 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="optionsJavaVersion" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" text="Java Version:" />
-                        <RadioButton fx:id="optionsJVMArguments" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" text="JVM Arguments:" />
-                        <TextField fx:id="optionsJavaVersionInput" layoutX="139.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
-                        <TextField fx:id="optionsJVMArgumentsInput" layoutX="139.0" layoutY="49.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
+                        <RadioButton fx:id="optionsJavaVersion" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#_optionsJavaVersion" text="Java Version:" />
+                        <RadioButton fx:id="optionsJVMArguments" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#_optionsJVMArguments" text="JVM Arguments:" />
+                        <TextField fx:id="optionsJavaVersionInput" disable="true" layoutX="139.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
+                        <TextField fx:id="optionsJVMArgumentsInput" disable="true" layoutX="139.0" layoutY="49.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
                      </children>
                   </Pane>
                </children>

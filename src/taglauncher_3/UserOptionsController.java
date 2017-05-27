@@ -79,5 +79,59 @@ public class UserOptionsController implements Initializable {
         Stage stage = Controller.getApplicationOptionStage();
         stage.close();
     }
+
+    @FXML
+    private void _optionsResolution(ActionEvent event) {
+        if (optionsResolution.isSelected())
+        {
+            optionsResolutionMin.setDisable(false);
+            optionsResolutionMax.setDisable(false);
+        }
+        else
+        {
+            optionsResolutionMin.setDisable(true);
+            optionsResolutionMax.setDisable(true);
+        }
+    }
+
+    @FXML
+    private void _optionsRamAllocation(ActionEvent event) {
+        if (optionsRamAllocation.isSelected())
+        {
+            optionsRamAllocationMin.setDisable(false);
+            optionsRamAllocationMax.setDisable(false);
+        }
+        else
+        {
+            optionsRamAllocationMin.setDisable(true);
+            optionsRamAllocationMax.setDisable(true);
+        }
+    }
+    
+    @FXML
+    private void _optionsJavaVersion(ActionEvent event) {   
+        if (optionsJavaVersion.isSelected())
+        {
+            optionsJavaVersionInput.setDisable(false);
+        }
+        else
+        {
+            optionsJavaVersionInput.setDisable(true);
+        }
+    }
+
+    @FXML
+    private void _optionsJVMArguments(ActionEvent event) {
+        if (optionsJVMArguments.isSelected())
+        {
+            optionsJVMArgumentsInput.setDisable(false);
+        }
+        else
+        {
+            optionsJVMArgumentsInput.setDisable(true);
+        }
+    }
+
+
     
 }
