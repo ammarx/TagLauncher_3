@@ -25,22 +25,6 @@
             <Button id="installGame" fx:id="installGame" layoutX="477.0" layoutY="457.0" mnemonicParsing="false" onAction="#installGameBtn" text="Install Game" />
             <Label id="versionType" fx:id="versionType" layoutX="643.0" layoutY="447.0" text="Release - Beta - Alpha" />
             <Label layoutX="596.0" layoutY="447.0" text="Type" />
-      <ToolBar prefHeight="25.0" prefWidth="807.0" styleClass="top_title_bar">
-         <items>
-            <Label text="The Primal Launcher" />
-            <Pane prefHeight="16.0" prefWidth="639.0" />
-            <Button fx:id="minimize" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#launchMinimize" prefHeight="18.0" prefWidth="18.0" styleClass="minimize_button">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="exit" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#launchExit" prefHeight="18.0" prefWidth="18.0" styleClass="exit_button">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-         </items>
-      </ToolBar>
       <VBox layoutX="279.0" layoutY="200.0" prefHeight="165.0" prefWidth="265.0" styleClass="main_login_area">
          <children>
             <Label text="Username">
@@ -66,7 +50,22 @@
             </HBox>
          </children>
       </VBox>
-      <Pane layoutY="28.0" prefHeight="531.0" prefWidth="5.0" styleClass="top_title_bar" />
-      <Pane layoutX="802.0" layoutY="28.0" prefHeight="531.0" prefWidth="5.0" styleClass="top_title_bar" />
+      <Pane layoutY="25.0" prefHeight="535.0" prefWidth="5.0" styleClass="top_title_bar" />
+      <Pane layoutX="804.0" layoutY="25.0" prefHeight="535.0" prefWidth="5.0" styleClass="top_title_bar" />
+      <Pane prefHeight="25.0" prefWidth="809.0" styleClass="top_title_bar">
+         <children>
+            <Label layoutX="10.0" layoutY="4.0" text="The Primal Launcher" />
+            <Button fx:id="exit" layoutX="774.0" layoutY="3.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#launchExit" prefHeight="18.0" prefWidth="18.0" styleClass="exit_button">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+            <Button fx:id="minimize" layoutX="751.0" layoutY="3.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#launchMinimize" prefHeight="18.0" prefWidth="18.0" styleClass="minimize_button">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

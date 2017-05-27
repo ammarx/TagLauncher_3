@@ -323,13 +323,13 @@ public class Controller implements Initializable {
     
     @FXML
     private void launchMinimize(ActionEvent event) {
-        Stage stage = Main.getLauncherMainWindow();
+        Stage stage = Main.getApplicationMainStage();
         stage.setIconified(true);
     }
 
     @FXML
     private void launchExit(ActionEvent event) {    
-        Stage stage = Main.getLauncherMainWindow();
+        Stage stage = Main.getApplicationMainStage();
         stage.close();
     }
 
