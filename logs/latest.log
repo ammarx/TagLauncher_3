@@ -1,14 +1,15 @@
-[18:30:51] [Client thread/INFO]: Setting user: Chalkie
-[18:30:52] [Client thread/WARN]: Skipping bad option: lastServer:
-[18:30:52] [Client thread/INFO]: LWJGL Version: 2.9.4
-[18:30:53] [Client thread/INFO]: Reloading ResourceManager: Default, TCMC - WW
-[18:30:54] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[18:30:54] [Thread-5/INFO]: Initializing LWJGL OpenAL
-[18:30:54] [Thread-5/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[18:30:54] [Thread-5/INFO]: OpenAL initialized.
-[18:30:54] [Sound Library Loader/INFO]: Sound engine started
-[18:30:58] [Client thread/INFO]: Created: 2048x2048 textures-atlas
-[18:31:02] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
-[18:31:10] [Client thread/INFO]: Stopping!
-[18:31:10] [Client thread/INFO]: SoundSystem shutting down...
-[18:31:11] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[15:49:37] [Client thread/INFO]: Setting user: HiFriends
+[15:49:39] [Client thread/WARN]: Skipping bad option: lastServer:
+[15:49:39] [Client thread/INFO]: LWJGL Version: 2.9.4
+[15:49:39] [Client thread/INFO]: Reloading ResourceManager: Default, TCMC - WW
+[15:49:40] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[15:49:40] [Thread-3/INFO]: Initializing LWJGL OpenAL
+[15:49:40] [Thread-3/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[15:49:40] [Thread-3/INFO]: OpenAL initialized.
+[15:49:41] [Sound Library Loader/INFO]: Sound engine started
+[15:49:44] [Client thread/INFO]: Created: 2048x2048 textures-atlas
+[15:49:46] [Client thread/INFO]: Narrator library for x64 successfully loaded
+[15:49:48] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[15:49:58] [Client thread/INFO]: Stopping!
+[15:49:58] [Client thread/INFO]: SoundSystem shutting down...
+[15:49:58] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com

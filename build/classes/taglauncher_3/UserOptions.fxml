@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60" fx:controller="taglauncher_3.UserOptionsController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taglauncher_3.UserOptionsController">
    <children>
       <BorderPane prefHeight="500.0" prefWidth="400.0">
          <top>
@@ -29,6 +28,7 @@
             <Pane prefHeight="35.0" prefWidth="400.0" styleClass="top_title_bar" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="optionsClose" layoutX="321.0" layoutY="5.0" mnemonicParsing="false" onAction="#_optionsClose" prefHeight="25.0" prefWidth="65.0" text="Close" />
+                  <Label fx:id="optionStatus" layoutX="15.0" layoutY="9.0" text="Status: Idle" />
                </children>
             </Pane>
          </bottom>
@@ -48,8 +48,8 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <RadioButton fx:id="optionsKeepLauncherOpen" layoutX="13.0" layoutY="25.0" mnemonicParsing="false" text="Keep Launcher Open" />
-                        <RadioButton fx:id="optionDisableAutoUpdates" disable="true" layoutX="13.0" layoutY="50.0" mnemonicParsing="false" text="Disable Auto Updates" />
+                        <RadioButton fx:id="optionsKeepLauncherOpen" layoutX="13.0" layoutY="25.0" mnemonicParsing="false" onAction="#_optionsKeepLauncherOpen" text="Keep Launcher Open" />
+                        <RadioButton fx:id="optionDisableAutoUpdates" disable="true" layoutX="13.0" layoutY="50.0" mnemonicParsing="false" onAction="#_optionDisableAutoUpdates" text="Disable Auto Updates" />
                      </children>
                   </Pane>
                   <Pane prefHeight="3.0" prefWidth="390.0" styleClass="top_title_bar" />
@@ -62,7 +62,7 @@
                         </Label>
                         <RadioButton fx:id="optionsResolution" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#_optionsResolution" text="Resolution:" />
                         <RadioButton fx:id="optionsRamAllocation" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#_optionsRamAllocation" text="Ram Allocation:" />
-                        <RadioButton fx:id="optionsBypassBlacklist" layoutX="10.0" layoutY="75.0" mnemonicParsing="false" text="Bypass Blacklist" />
+                        <RadioButton fx:id="optionsBypassBlacklist" layoutX="10.0" layoutY="75.0" mnemonicParsing="false" onAction="#_optionsBypassBlacklist" text="Bypass Blacklist" />
                         <TextField fx:id="optionsResolutionMin" disable="true" layoutX="144.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Min" />
                         <TextField fx:id="optionsRamAllocationMin" disable="true" layoutX="144.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="-Xms" />
                         <TextField fx:id="optionsResolutionMax" disable="true" layoutX="273.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Max" />
@@ -77,9 +77,9 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <ComboBox fx:id="optionsSelectVersion" layoutX="10.0" layoutY="25.0" minHeight="25.0" prefHeight="25.0" prefWidth="285.0" promptText="Select a version to download &amp; install" />
-                        <Button fx:id="optionsSelectVersionInstall" layoutX="311.0" layoutY="25.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Install" />
-                        <RadioButton fx:id="optionsSelectVersionForce" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" text="Force Download" />
+                        <ComboBox fx:id="optionsSelectVersion" layoutX="10.0" layoutY="25.0" minHeight="25.0" onAction="#_optionsSelectVersion" prefHeight="25.0" prefWidth="285.0" promptText="Select a version to download &amp; install" />
+                        <Button fx:id="optionsSelectVersionInstall" layoutX="311.0" layoutY="25.0" mnemonicParsing="false" onAction="#_optionsSelectVersionInstall" prefHeight="25.0" prefWidth="65.0" text="Install" />
+                        <RadioButton fx:id="optionsSelectVersionForce" layoutX="10.0" layoutY="55.0" mnemonicParsing="false" onAction="#_optionsSelectVersionForce" text="Force Download" />
                      </children>
                   </Pane>
                   <Pane prefHeight="3.0" prefWidth="390.0" styleClass="top_title_bar" />
@@ -94,6 +94,7 @@
                         <RadioButton fx:id="optionsJVMArguments" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#_optionsJVMArguments" text="JVM Arguments:" />
                         <TextField fx:id="optionsJavaVersionInput" disable="true" layoutX="139.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
                         <TextField fx:id="optionsJVMArgumentsInput" disable="true" layoutX="139.0" layoutY="49.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
+                        <RadioButton fx:id="optionsDebugMode" layoutX="297.0" layoutY="85.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#_optionsDebugMode" opacity="0.0" text="DebugMode" />
                      </children>
                   </Pane>
                </children>
