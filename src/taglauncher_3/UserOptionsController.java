@@ -30,6 +30,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -419,6 +421,42 @@ public class UserOptionsController implements Initializable {
         {
             optionsJVMArguments.setSelected(true);
             optionsJVMArgumentsInput.setDisable(false);
+        }
+    }
+
+    @FXML
+    private void kt_optionsResolutionMin(KeyEvent event) { 
+        System.out.print("LN " + optionsResolutionMin.getText().length());
+        if (!"0123456789".contains(event.getCharacter()) || optionsResolutionMin.getText().length() > 3)
+        {
+            event.consume();    
+        }
+    }
+
+    @FXML
+    private void kt_optionsRamAllocationMin(KeyEvent event) {
+        System.out.print("LN " + optionsResolutionMin.getText().length());
+        if (!"0123456789".contains(event.getCharacter()) || optionsResolutionMin.getText().length() > 3)
+        {
+            event.consume();    
+        }
+    }
+
+    @FXML
+    private void kt_optionsResolutionMax(KeyEvent event) {
+        System.out.print("LN " + optionsResolutionMin.getText().length());
+        if (!"0123456789".contains(event.getCharacter()) || optionsResolutionMin.getText().length() > 3)
+        {
+            event.consume();    
+        }
+    }
+
+    @FXML
+    private void kt_optionsRamAllocationMax(KeyEvent event) {
+        System.out.print("LN " + optionsResolutionMin.getText().length());
+        if (!"0123456789".contains(event.getCharacter()) || optionsResolutionMin.getText().length() > 3)
+        {
+            event.consume();    
         }
     }
 }

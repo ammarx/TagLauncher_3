@@ -142,9 +142,24 @@ public class Controller implements Initializable {
             API.downloadProfile((String) username.getText());
             API.syncVersions();
             API.downloadMinecraft((String) version.getValue(), false); //force download flag
-            //API.setMemory("2G");
-            //API.setVersionData(username.getText());
-            API.injectNetty();
+
+            API.setMinMemory(Integer.parseInt(LauncherOptions.ramAllocationMin));
+            API.setMemory(Integer.parseInt(LauncherOptions.ramAllocationMax));
+            API.setHeight(Integer.parseInt(LauncherOptions.resolutionHeight));
+            API.setWidth(Integer.parseInt(LauncherOptions.resolutionWidth));
+            if (LauncherOptions.bypassBlacklist == true)
+            {
+               API.injectNetty(); 
+            }
+            if (!LauncherOptions.javaPath.equals(""))
+            {
+                API.setJavaPath(LauncherOptions.javaPath);
+            }
+            if (!LauncherOptions.jvmArguments.equals(""))
+            {
+                API.setJVMArgument(LauncherOptions.jvmArguments);
+            }
+            
             API.runMinecraft(username.getText(), (String) version.getValue());
             return null;
         });

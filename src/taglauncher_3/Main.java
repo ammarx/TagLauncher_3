@@ -85,6 +85,23 @@ public class Main extends Application {
  
     public static void initSaveUserSettings()
     {
+        if (LauncherOptions.resolutionWidth.equals(""))
+        {
+            LauncherOptions.resolutionWidth = "854";
+        }
+        if (LauncherOptions.resolutionHeight.equals(""))
+        {
+            LauncherOptions.resolutionHeight = "480";
+        }
+        if (LauncherOptions.ramAllocationMin.equals(""))
+        {
+            LauncherOptions.ramAllocationMin = "1024";
+        }
+        if (LauncherOptions.ramAllocationMax.equals(""))
+        {
+            LauncherOptions.ramAllocationMax = "1024";
+        }
+        
         Properties prop = new Properties();
         OutputStream output = null;
         try {

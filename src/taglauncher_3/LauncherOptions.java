@@ -13,7 +13,7 @@ public class LauncherOptions {
 
     
     static String playerUsername = "Username";
-    static String playerVersion = "1";
+    static String playerVersion = "-1";
     static boolean refreshVersionList = false;
     static boolean bypassBlacklist = true;
     static boolean keepLauncherOpen = false;

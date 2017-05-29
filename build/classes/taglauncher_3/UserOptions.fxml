@@ -63,10 +63,10 @@
                         <RadioButton fx:id="optionsResolution" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#_optionsResolution" text="Resolution:" />
                         <RadioButton fx:id="optionsRamAllocation" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#_optionsRamAllocation" text="Ram Allocation:" />
                         <RadioButton fx:id="optionsBypassBlacklist" layoutX="10.0" layoutY="75.0" mnemonicParsing="false" onAction="#_optionsBypassBlacklist" text="Bypass Blacklist" />
-                        <TextField fx:id="optionsResolutionMin" disable="true" layoutX="144.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Min" />
-                        <TextField fx:id="optionsRamAllocationMin" disable="true" layoutX="144.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="-Xms" />
-                        <TextField fx:id="optionsResolutionMax" disable="true" layoutX="273.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Max" />
-                        <TextField fx:id="optionsRamAllocationMax" disable="true" layoutX="273.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="-Xmx" />
+                        <TextField fx:id="optionsResolutionMin" disable="true" layoutX="144.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" onKeyTyped="#___optionsResolutionMin" prefHeight="20.0" prefWidth="103.0" promptText="Width" />
+                        <TextField fx:id="optionsRamAllocationMin" disable="true" layoutX="144.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Min" />
+                        <TextField fx:id="optionsResolutionMax" disable="true" layoutX="273.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Height" />
+                        <TextField fx:id="optionsRamAllocationMax" disable="true" layoutX="273.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Max" />
                      </children>
                   </Pane>
                   <Pane prefHeight="3.0" prefWidth="390.0" styleClass="top_title_bar" />
