@@ -57,6 +57,10 @@ public class Launcher_Main extends Application {
         stage.setTitle("The Primal Launcher - v0.8-alpha");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setMinWidth(450);        
+        stage.setMinHeight(450);
+        stage.setMaxWidth(450);        
+        stage.setMaxHeight(450);
         stage.setResizable(false);
         Launcher_Settings.setTheme(scene); 
         
