@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taglauncher_3.UserOptionsController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taglauncher_3.gui.options.Launcher_Options_Controller">
    <children>
       <BorderPane prefHeight="500.0" prefWidth="400.0">
          <top>
@@ -20,7 +20,7 @@
                   <Button fx:id="optionsExit" layoutX="367.0" layoutY="4.0" maxHeight="18.0" maxWidth="18.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#_optionsExit" styleClass="exit_button" />
                   <Pane layoutX="385.0" prefHeight="25.0" prefWidth="15.0" />
                   <Pane prefHeight="25.0" prefWidth="15.0" />
-                  <Label layoutX="15.0" layoutY="4.0" text="The Options Menu" />
+                  <Label layoutX="15.0" layoutY="4.0" styleClass="label-black" text="The Options Menu" />
                </children>
             </Pane>
          </top>
@@ -28,7 +28,7 @@
             <Pane prefHeight="35.0" prefWidth="400.0" styleClass="top_title_bar" BorderPane.alignment="CENTER">
                <children>
                   <Button fx:id="optionsClose" layoutX="321.0" layoutY="5.0" mnemonicParsing="false" onAction="#_optionsClose" prefHeight="25.0" prefWidth="65.0" text="Close" />
-                  <Label fx:id="optionStatus" layoutX="15.0" layoutY="9.0" text="Status: Idle" />
+                  <Label fx:id="optionStatus" layoutX="15.0" layoutY="9.0" styleClass="label-black" text="Status: Idle" />
                </children>
             </Pane>
          </bottom>
@@ -50,6 +50,8 @@
                         </Label>
                         <RadioButton fx:id="optionsKeepLauncherOpen" layoutX="13.0" layoutY="25.0" mnemonicParsing="false" onAction="#_optionsKeepLauncherOpen" text="Keep Launcher Open" />
                         <RadioButton fx:id="optionDisableAutoUpdates" disable="true" layoutX="13.0" layoutY="50.0" mnemonicParsing="false" onAction="#_optionDisableAutoUpdates" text="Disable Auto Updates" />
+                        <ComboBox fx:id="themeType" disable="true" layoutX="226.0" layoutY="71.0" onAction="#_themeType" prefHeight="25.0" prefWidth="150.0" promptText="Choose a theme" />
+                        <RadioButton fx:id="useThemeType" layoutX="13.0" layoutY="75.0" mnemonicParsing="false" onAction="#_useThemeType" text="Custom Theme" />
                      </children>
                   </Pane>
                   <Pane prefHeight="3.0" prefWidth="390.0" styleClass="top_title_bar" />
@@ -63,10 +65,10 @@
                         <RadioButton fx:id="optionsResolution" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#_optionsResolution" text="Resolution:" />
                         <RadioButton fx:id="optionsRamAllocation" layoutX="10.0" layoutY="50.0" mnemonicParsing="false" onAction="#_optionsRamAllocation" text="Ram Allocation:" />
                         <RadioButton fx:id="optionsBypassBlacklist" layoutX="10.0" layoutY="75.0" mnemonicParsing="false" onAction="#_optionsBypassBlacklist" text="Bypass Blacklist" />
-                        <TextField fx:id="optionsResolutionMin" disable="true" layoutX="144.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" onKeyTyped="#___optionsResolutionMin" prefHeight="20.0" prefWidth="103.0" promptText="Width" />
-                        <TextField fx:id="optionsRamAllocationMin" disable="true" layoutX="144.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Min" />
-                        <TextField fx:id="optionsResolutionMax" disable="true" layoutX="273.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Height" />
-                        <TextField fx:id="optionsRamAllocationMax" disable="true" layoutX="273.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="103.0" promptText="Max" />
+                        <TextField fx:id="optionsResolutionMin" disable="true" layoutX="144.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" onKeyTyped="#kt_optionsResolutionMin" prefHeight="20.0" prefWidth="103.0" promptText="Width" />
+                        <TextField fx:id="optionsRamAllocationMin" disable="true" layoutX="144.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" onKeyTyped="#kt_optionsRamAllocationMin" prefHeight="20.0" prefWidth="103.0" promptText="Min" />
+                        <TextField fx:id="optionsResolutionMax" disable="true" layoutX="273.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" onKeyTyped="#kt_optionsResolutionMax" prefHeight="20.0" prefWidth="103.0" promptText="Height" />
+                        <TextField fx:id="optionsRamAllocationMax" disable="true" layoutX="273.0" layoutY="50.0" maxHeight="20.0" minHeight="20.0" onKeyTyped="#kt_optionsRamAllocationMax" prefHeight="20.0" prefWidth="103.0" promptText="Max" />
                      </children>
                   </Pane>
                   <Pane prefHeight="3.0" prefWidth="390.0" styleClass="top_title_bar" />

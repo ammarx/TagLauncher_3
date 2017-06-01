@@ -1,15 +1,15 @@
-[18:46:41] [Client thread/INFO]: Setting user: HiFriends
-[18:46:43] [Client thread/WARN]: Skipping bad option: lastServer:
-[18:46:43] [Client thread/INFO]: LWJGL Version: 2.9.4
-[18:46:43] [Client thread/INFO]: Reloading ResourceManager: Default, TCMC - WW
-[18:46:44] [Sound Library Loader/INFO]: Starting up SoundSystem...
-[18:46:44] [Thread-3/INFO]: Initializing LWJGL OpenAL
-[18:46:44] [Thread-3/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
-[18:46:44] [Thread-3/INFO]: OpenAL initialized.
-[18:46:44] [Sound Library Loader/INFO]: Sound engine started
-[18:46:48] [Client thread/INFO]: Created: 2048x2048 textures-atlas
-[18:46:50] [Client thread/INFO]: Narrator library for x64 successfully loaded
-[18:46:52] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
-[18:46:54] [Client thread/INFO]: Stopping!
-[18:46:54] [Client thread/INFO]: SoundSystem shutting down...
-[18:46:54] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
+[19:45:15] [Client thread/INFO]: Setting user: Chalkie
+[19:45:17] [Client thread/WARN]: Skipping bad option: lastServer:
+[19:45:17] [Client thread/INFO]: LWJGL Version: 2.9.4
+[19:45:17] [Client thread/INFO]: Reloading ResourceManager: Default, TCMC - WW
+[19:45:18] [Sound Library Loader/INFO]: Starting up SoundSystem...
+[19:45:18] [Thread-3/INFO]: Initializing LWJGL OpenAL
+[19:45:18] [Thread-3/INFO]: (The LWJGL binding of OpenAL.  For more information, see http://www.lwjgl.org)
+[19:45:18] [Thread-3/INFO]: OpenAL initialized.
+[19:45:19] [Sound Library Loader/INFO]: Sound engine started
+[19:45:23] [Client thread/INFO]: Created: 2048x2048 textures-atlas
+[19:45:25] [Client thread/INFO]: Narrator library for x64 successfully loaded
+[19:45:26] [Realms Notification Availability checker #1/INFO]: Could not authorize you against Realms server: Invalid session id
+[19:45:38] [Client thread/INFO]: Stopping!
+[19:45:38] [Client thread/INFO]: SoundSystem shutting down...
+[19:45:38] [Client thread/WARN]: Author: Paul Lamb, www.paulscode.com
