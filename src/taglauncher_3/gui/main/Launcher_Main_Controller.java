@@ -267,6 +267,8 @@ public class Launcher_Main_Controller implements Initializable {
             stage.initStyle(StageStyle.UNDECORATED);
             stage.setTitle("The Options Menu");
             Scene sceneOptions = new Scene(optionsGUI);
+            stage.setMinWidth(400);        
+            stage.setMinHeight(500);
             stage.setMaxWidth(400);        
             stage.setMaxHeight(500);
             stage.setResizable(false);
