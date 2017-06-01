@@ -119,8 +119,6 @@ public class Launcher_Options_Controller implements Initializable {
                 optionStatus.setText("Status: Getting latest versions");
                 optionsSelectVersion.setDisable(true);
                 optionsSelectVersionInstall.setDisable(true);
-                optionsExit.setDisable(true);
-                optionsClose.setDisable(true);
                 API.downloadVersionManifest();
 
                 for (Object ob : API.getInstallableVersionsList()) {
@@ -141,8 +139,6 @@ public class Launcher_Options_Controller implements Initializable {
                 }
                 optionsSelectVersion.setDisable(false);
                 optionsSelectVersionInstall.setDisable(false);
-                optionsExit.setDisable(false);
-                optionsClose.setDisable(false);
                 try {
                     Platform.runLater(() -> {
                         optionStatus.setText("Status: Idle");
@@ -174,9 +170,12 @@ public class Launcher_Options_Controller implements Initializable {
         if (optionsResolution.isSelected()) {
             optionsResolutionMin.setDisable(false);
             optionsResolutionMax.setDisable(false);
+            
         } else {
             optionsResolutionMin.setDisable(true);
             optionsResolutionMax.setDisable(true);
+            optionsResolutionMin.setText("854");
+            optionsResolutionMax.setText("480");
         }
     }
 
@@ -188,6 +187,8 @@ public class Launcher_Options_Controller implements Initializable {
         } else {
             optionsRamAllocationMin.setDisable(true);
             optionsRamAllocationMax.setDisable(true);
+            optionsRamAllocationMin.setText("1024");
+            optionsRamAllocationMax.setText("1024");
         }
     }
 
