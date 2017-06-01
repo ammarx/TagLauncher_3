@@ -4,57 +4,75 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="" styleClass="main_scene" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taglauncher_3.Controller">
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="450.0" style="" styleClass="main_scene" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taglauncher_3.gui.main.Launcher_Main_Controller">
     <children>
-        <ToolBar layoutY="261.0" prefHeight="40.0" prefWidth="521.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <VBox layoutX="279.0" layoutY="200.0" prefHeight="165.0" prefWidth="265.0" styleClass="main_login_area">
+      <HBox prefHeight="18.0" prefWidth="253.0">
          <children>
-            <Label text="Username">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="username" prefHeight="26.0" prefWidth="230.0" promptText="Username" styleClass="main_username" />
-            <Pane prefHeight="20.0" prefWidth="267.0" />
-            <Label text="Version">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <ComboBox id="version" fx:id="version" prefHeight="25.0" prefWidth="312.0" promptText="Select A Version" />
-            <Pane prefHeight="20.0" prefWidth="267.0" />
-            <HBox prefHeight="18.0" prefWidth="253.0">
+            <Pane prefHeight="25.0" prefWidth="46.0" />
+         </children>
+      </HBox>
+      <BorderPane prefHeight="450.0" prefWidth="450.0">
+         <top>
+            <Pane prefHeight="25.0" prefWidth="200.0" styleClass="top_title_bar" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="options" mnemonicParsing="false" onAction="#launchOptions" prefHeight="25.0" prefWidth="110.0" text="Options" />
-                  <Pane prefHeight="25.0" prefWidth="46.0" />
-                  <Button id="launch" fx:id="launch" mnemonicParsing="false" onAction="#lunachMineCraft" prefHeight="26.0" prefWidth="110.0" text="Launch" />
+                  <Label layoutX="15.0" layoutY="3.0" styleClass="label-black" text="The Primal Launcher" />
+                  <Button fx:id="exit" layoutX="422.0" layoutY="4.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#launchExit" prefHeight="18.0" prefWidth="18.0" styleClass="exit_button">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="minimize" layoutX="403.0" layoutY="4.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#launchMinimize" prefHeight="18.0" prefWidth="18.0" styleClass="minimize_button">
+                     <font>
+                        <Font size="9.0" />
+                     </font>
+                  </Button>
                </children>
-            </HBox>
-         </children>
-      </VBox>
-      <Pane layoutY="25.0" prefHeight="535.0" prefWidth="5.0" styleClass="top_title_bar" />
-      <Pane layoutX="804.0" layoutY="25.0" prefHeight="535.0" prefWidth="5.0" styleClass="top_title_bar" />
-      <Pane prefHeight="25.0" prefWidth="809.0" styleClass="top_title_bar">
-         <children>
-            <Label layoutX="10.0" layoutY="4.0" text="The Primal Launcher" />
-            <Button fx:id="exit" layoutX="774.0" layoutY="3.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#launchExit" prefHeight="18.0" prefWidth="18.0" styleClass="exit_button">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-            <Button fx:id="minimize" layoutX="751.0" layoutY="3.0" minHeight="18.0" minWidth="18.0" mnemonicParsing="false" onAction="#launchMinimize" prefHeight="18.0" prefWidth="18.0" styleClass="minimize_button">
-               <font>
-                  <Font size="9.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="20.0" prefWidth="200.0" styleClass="top_title_bar" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="launcherStatus" layoutX="7.0" layoutY="1.0" styleClass="label-black" text="Status: Checking..." />
+               </children></Pane>
+         </bottom>
+         <left>
+            <Pane prefWidth="5.0" styleClass="top_title_bar" BorderPane.alignment="CENTER" />
+         </left>
+         <right>
+            <Pane prefWidth="5.0" styleClass="top_title_bar" BorderPane.alignment="CENTER" />
+         </right>
+         <center>
+            <Pane prefHeight="450.0" prefWidth="450.0" styleClass="background" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane layoutX="96.0" layoutY="75.0" prefHeight="227.0" prefWidth="250.0" styleClass="main_login_area">
+                     <children>
+                        <TextField fx:id="username" layoutX="25.0" layoutY="75.0" onKeyTyped="#kt_username" prefHeight="26.0" prefWidth="200.0" promptText="Username" styleClass="main_username">
+                           <tooltip>
+                              <Tooltip fx:id="tt_username" />
+                           </tooltip></TextField>
+                        <ComboBox id="version" fx:id="version" layoutX="25.0" layoutY="111.0" prefHeight="25.0" prefWidth="200.0" promptText="Select A Version" styleClass="root" />
+                        <Button id="launch" fx:id="launch" layoutX="135.0" layoutY="151.0" mnemonicParsing="false" onAction="#launchMineCraft" prefHeight="26.0" prefWidth="90.0" styleClass="root" text="Play" />
+                        <Button fx:id="options" layoutX="25.0" layoutY="152.0" mnemonicParsing="false" onAction="#launchOptions" prefHeight="25.0" prefWidth="90.0" styleClass="root" text="Options" />
+                     </children>
+                  </Pane>
+                  <ImageView fx:id="playerAvatarImage" fitHeight="100.0" fitWidth="100.0" layoutX="171.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" styleClass="avatar_image">
+                     <image>
+                        <Image url="@../../css/images/steve.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="debugLabel" layoutX="15.0" layoutY="319.0" prefHeight="66.0" prefWidth="411.0" text="debug" wrapText="true" />
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
     </children>
 </AnchorPane>

@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="TagLauncher_3.jar" size="1100784" download="eager" />
+    <jar href="TagLauncher_3.jar" size="1100927" download="eager" />
     <jar href="lib\HEX_MOD.jar" size="4879" download="eager" />
     <jar href="lib\TagAPI_3.jar" size="67776" download="eager" />
     <jar href="lib\commons-io-2.5.jar" size="208696" download="eager" />

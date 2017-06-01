@@ -73,12 +73,20 @@
 
 }
 
+.side_title_bar {
+    -fx-background-image: url("images/brightSquares.png");
+    -fx-background-color: #452665;
+        -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+
 .main_scene {
     -fx-background-image: url("images/background_1.png");
 }
 
 .main_username {   
     -fx-background-color: #180733;
+    -fx-color: #ffffff;
     
 }
 .main_login_area {
@@ -97,11 +105,30 @@
     -fx-padding: 0px 5px 0px 5px;*/
 }
 
-.combo-box-popup > .list-view {
-    -fx-pref-width: 250;
+#version .combo-box-popup > .list-view {
+    -fx-pref-width: 200;
 }
 
+#optionsSelectVersion .combo-box-popup > .list-view {
+    -fx-pref-width: 285;
+}
+
+#themeType .combo-box-popup > .list-view {
+    -fx-pref-width: 150;
+}
+
+
+
+
+.avatar_image {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
 /*.combo-box .arrow-button  {
     -fx-opacity: 0.0;
     -fx-cursor: text;
 }*/
+
+.tooltip {
+        -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+        -fx-border-radius: 6px;
+}
