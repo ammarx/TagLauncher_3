@@ -51,8 +51,6 @@ public class Launcher_Main_Controller implements Initializable {
     private Tooltip tt_username;
     @FXML
     private Label launcherStatus;
-    @FXML
-    private Label debugLabel;
 
     private void setApplicationOptionStage(Stage stage) {
         Launcher_Main_Controller.applicationOptionStage = stage;
@@ -80,6 +78,7 @@ public class Launcher_Main_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         setToolTips();
+
         new Thread(() -> loadPlayerAvatar()).start(); //#LOVE YOU JAVA 8
         tagapi_3.API_Interface API = new tagapi_3.API_Interface();
         ExecutorService executor1 = Executors.newCachedThreadPool();
@@ -300,18 +299,11 @@ public class Launcher_Main_Controller implements Initializable {
     }
 
     private void loadPlayerAvatar() {
-         debugLabel.setText("METHOD LOADED");
-        Image image = new Image("https://mcapi.ca/avatar/" + Launcher_Settings.playerUsername);
+        Image image = new Image("http://minotar.net/avatar/" + Launcher_Settings.playerUsername + "/100");
         if (!image.isError()) //incase someone adds random shit or changes URL. Will show steve not a blank area.
         {
             playerAvatarImage.setImage(image);
         }
-        else
-        {
-           debugLabel.setText(image.getException().toString());
-           System.out.print(image.getException());
-        }
-
     }
 
     private void setToolTips() {

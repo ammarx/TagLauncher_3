@@ -69,7 +69,6 @@
                         <Image url="@../../css/images/steve.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="debugLabel" layoutX="15.0" layoutY="319.0" prefHeight="66.0" prefWidth="411.0" text="debug" wrapText="true" />
                </children>
             </Pane>
          </center>
