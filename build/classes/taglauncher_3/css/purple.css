@@ -81,7 +81,15 @@
 
 
 .main_scene {
-    -fx-background-image: url("images/background_1.png");
+    -fx-background-image: url("images/background_3.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-attachment: fixed;
+    -fx-background-position: center; 
+    -fx-background-size: cover;
+}
+
+.colorOverlay {
+    -fx-background-color: rgba(69, 38, 101, 0.65);
 }
 
 .main_username {   
@@ -131,4 +139,5 @@
 .tooltip {
         -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
         -fx-border-radius: 6px;
+        -fx-font-size: 10px;
 }

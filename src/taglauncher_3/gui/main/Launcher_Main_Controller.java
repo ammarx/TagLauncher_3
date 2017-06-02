@@ -5,19 +5,36 @@
  */
 package taglauncher_3.gui.main;
 
+import java.awt.MouseInfo;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -30,9 +47,13 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.util.Duration;
 import taglauncher_3.Launcher_Main;
 import taglauncher_3.Launcher_Settings;
 
@@ -43,6 +64,8 @@ import taglauncher_3.Launcher_Settings;
 public class Launcher_Main_Controller implements Initializable {
 
     private static Stage applicationOptionStage;
+    ArrayList<String> backgroundList = new ArrayList<String>();
+    
     private double xOffset = 0;
     private double yOffset = 0;
     @FXML
@@ -51,6 +74,14 @@ public class Launcher_Main_Controller implements Initializable {
     private Tooltip tt_username;
     @FXML
     private Label launcherStatus;
+    @FXML
+    private AnchorPane mainBackground;
+    @FXML
+    private Tooltip tt_version;
+    @FXML
+    private Tooltip tt_play;
+    @FXML
+    private Tooltip tt_options;
 
     private void setApplicationOptionStage(Stage stage) {
         Launcher_Main_Controller.applicationOptionStage = stage;
@@ -78,26 +109,12 @@ public class Launcher_Main_Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         setToolTips();
+        setTextBoxMax();
+        runBackground();
 
         new Thread(() -> loadPlayerAvatar()).start(); //#LOVE YOU JAVA 8
+        new Thread(() -> checkLatestVersion()).start();
         tagapi_3.API_Interface API = new tagapi_3.API_Interface();
-        ExecutorService executor1 = Executors.newCachedThreadPool();
-        executor1.submit(() -> {
-            if (API.getUpdateStatus().equals("0")) {
-                System.out.println("You are running the latest API version");
-                Platform.runLater(() -> {
-                    launcherStatus.setText("Status: Your launcher is up to date.");
-                });
-
-            } else {
-                System.out.println("You are " + API.getUpdateStatus() + " versions behind");
-                Platform.runLater(() -> {
-                    launcherStatus.setText("Status: Your launcher is outdated!");
-                });
-            }
-            return null;
-        });
-        executor1.shutdown();
 
         username.setText(Launcher_Settings.playerUsername);
 
@@ -189,28 +206,7 @@ public class Launcher_Main_Controller implements Initializable {
                             API.dumpLogs();
                             System.exit(0);
                         } else {
-                            Platform.runLater(() -> {
-                                if (API.getUpdateStatus().equals("0")) {
-                                    System.out.println("You are running the latest API version");
-                                    Platform.runLater(() -> {
-                                        launcherStatus.setText("Status: Your launcher is up to date.");
-                                        username.setDisable(false);
-                                        options.setDisable(false);
-                                        launch.setDisable(false);
-                                        version.setDisable(false);
-                                    });
-
-                                } else {
-                                    System.out.println("You are " + API.getUpdateStatus() + " versions behind");
-                                    Platform.runLater(() -> {
-                                        launcherStatus.setText("Status: Your launcher is outdated!");
-                                        username.setDisable(false);
-                                        options.setDisable(false);
-                                        launch.setDisable(false);
-                                        version.setDisable(false);
-                                    });
-                                }
-                            });
+                            new Thread(() -> checkLatestVersion()).start();
                         }
                         return;
 
@@ -265,7 +261,8 @@ public class Launcher_Main_Controller implements Initializable {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.setTitle("The Options Menu");
+            stage.getIcons().add(new Image(Launcher_Main.class.getResourceAsStream("/taglauncher_3/css/images/icon.png" )));
+            stage.setTitle("Minecraft Launcher - Options");
             Scene sceneOptions = new Scene(optionsGUI);
             stage.setMinWidth(400);        
             stage.setMinHeight(500);
@@ -312,26 +309,109 @@ public class Launcher_Main_Controller implements Initializable {
     }
 
     private void setToolTips() {
-        //Image warnIMG = new Image(getClass().getResourceAsStream("/taglauncher_3/css/images/warning.png"));
         Image infoIMG = new Image(getClass().getResourceAsStream("/taglauncher_3/css/images/m_info.png"));
-        //Image helpIMG = new Image(getClass().getResourceAsStream("/taglauncher_3/css/images/help.png"));
-        //Image critIMG = new Image(getClass().getResourceAsStream("/taglauncher_3/css/images/critical.png"));
-        //#.setGraphic(new ImageView(image));
 
         tt_username.setText(
                 ""
-                + "You must pick a username thats between\n"
-                + "1 and 16 characters long.\n"
+                + "Your Username\n"
+                + "The name must be between 4 and 16 characters long and can only contain letters, numbers and underscores.\n"
         );
         tt_username.setGraphic(new ImageView(infoIMG));
+        
+        tt_version.setText(
+                ""
+                + "Minecraft Version\n"
+                + "Select what version of minecraft you wish to play.\n"
+                + "You can download new versions via the options menu.\n"
+        );
+        tt_version.setGraphic(new ImageView(infoIMG)); 
+        
+        tt_options.setText(
+                ""
+                + "The Options Menu\n"
+                + "A menu that allows you to tweak various settings for the launcher and Minecraft.\n"
+        );
+        tt_options.setGraphic(new ImageView(infoIMG));
+        tt_play.setText(
+                ""
+                + "Play Minecraft\n"
+                + "Launches Minecraft with the version and settings you have chosen.\n"
+        );
+        tt_play.setGraphic(new ImageView(infoIMG));  
     }
 
     @FXML
     private void kt_username(KeyEvent event) {
-        if (username.getText().length() > 16) {
-            Toolkit.getDefaultToolkit().beep();
+        if (!event.getCharacter().matches("[A-Za-z0-9\b_]")) {
+            //Toolkit.getDefaultToolkit().beep();
             event.consume();
+
         }
     }
+     
+    private void runBackground() {        
+        for(int i =  1; i < 11; i++){
+             backgroundList.add("background_" + i);
+        }
 
+        int randomBG = ThreadLocalRandom.current().nextInt(0, backgroundList.size());
+        mainBackground.setStyle("-fx-background-image: url('/taglauncher_3/css/images/" + backgroundList.get(randomBG) + ".png')");
+
+        Timeline rotateBackground = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                int randomBG = ThreadLocalRandom.current().nextInt(0, backgroundList.size());
+
+                mainBackground.setStyle("-fx-background-image: url('/taglauncher_3/css/images/" + backgroundList.get(randomBG) + ".png')");
+            }
+        }));
+        rotateBackground.setCycleCount(Timeline.INDEFINITE);
+        rotateBackground.play();
+    }
+
+    private void checkLatestVersion() {
+        try {
+            URL versionLastesturl = new URL("https://raw.githubusercontent.com/ammarx/TagLauncher_3/GuiGetsFaceLift/_html_/latestVersion");
+            URLConnection con = versionLastesturl.openConnection();
+            con.setUseCaches(false); //had to as it was caching it.
+            
+            BufferedReader in = new BufferedReader(new InputStreamReader(versionLastesturl.openStream()));
+            String line;
+            
+            while ((line = in.readLine()) != null) {
+                System.out.print(line);
+                if (Launcher_Settings.launcherVersion.equals(line))
+                {
+                    Platform.runLater(() -> {launcherStatus.setText("Status: Your launcher is up to date!");});   
+                }
+                else
+                {
+                   Platform.runLater(() -> {launcherStatus.setText("Status: Your launcher is outdated!");});  
+                }
+            }
+            in.close();
+
+        } catch (MalformedURLException e) {
+            Platform.runLater(() -> {launcherStatus.setText("Status: Unable to check for latest version!");});
+        } catch (IOException e) {                        
+            Platform.runLater(() -> {launcherStatus.setText("Status: Unable to check for latest version!");});
+            
+        }
+    }
+    
+    private void setTextBoxMax() {
+        username.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                    Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    if (username.getText().length() > 16) {
+                        username.setText(username.getText().substring(0, 16));
+                        //Toolkit.getDefaultToolkit().beep();
+                    }
+                }
+            }
+        });
+    }
 }

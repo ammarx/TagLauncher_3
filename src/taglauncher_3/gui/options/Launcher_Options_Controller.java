@@ -14,6 +14,8 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,7 +28,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import taglauncher_3.Launcher_Main;
 import taglauncher_3.Launcher_Settings;
@@ -84,6 +90,30 @@ public class Launcher_Options_Controller implements Initializable {
     private ComboBox themeType;
     @FXML
     private RadioButton useThemeType;
+    @FXML
+    private Tooltip tt_keepLauncherOpen;
+    @FXML
+    private Tooltip tt_customTheme;
+    @FXML
+    private Tooltip tt_resolution;
+    @FXML
+    private Tooltip tt_ramAllocation;
+    @FXML
+    private Tooltip tt_bypassBlacklist;
+    @FXML
+    private Tooltip tt_selectVersion;
+    @FXML
+    private Tooltip tt_selectVersionInstall;
+    @FXML
+    private Tooltip tt_forceDownload;
+    @FXML
+    private Tooltip tt_javaVersion;
+    @FXML
+    private Tooltip tt_jvmArgs;
+    @FXML
+    private Label launcherVersion;
+    @FXML
+    private Tooltip tt_launcherVersion;
 
     /**
      * Initializes the controller class.
@@ -91,6 +121,8 @@ public class Launcher_Options_Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        setToolTips();
+        setTextBoxMax();
         themeType.getItems().addAll("Purple", "Gray", "Red", "Green", "Blue", "White");
 
         loadOptionsData();
@@ -170,7 +202,7 @@ public class Launcher_Options_Controller implements Initializable {
         if (optionsResolution.isSelected()) {
             optionsResolutionMin.setDisable(false);
             optionsResolutionMax.setDisable(false);
-            
+
         } else {
             optionsResolutionMin.setDisable(true);
             optionsResolutionMax.setDisable(true);
@@ -212,15 +244,12 @@ public class Launcher_Options_Controller implements Initializable {
 
     @FXML
     private void _optionsKeepLauncherOpen(ActionEvent event) {
-        if (optionsKeepLauncherOpen.isSelected())
-        {
+        if (optionsKeepLauncherOpen.isSelected()) {
             Launcher_Settings.keepLauncherOpen = true;
-        }
-        else
-        {
+        } else {
             Launcher_Settings.keepLauncherOpen = false;
         }
-        
+
     }
 
     @FXML
@@ -352,8 +381,10 @@ public class Launcher_Options_Controller implements Initializable {
     private String capitalize(final String line) {
         return Character.toUpperCase(line.charAt(0)) + line.substring(1);
     }
-    
+
     private void loadOptionsData() {
+
+        launcherVersion.setText("Version: " + Launcher_Settings.launcherVersion);
 
         optionsResolutionMin.setText(Launcher_Settings.resolutionWidth);
         optionsResolutionMax.setText(Launcher_Settings.resolutionHeight);
@@ -386,13 +417,13 @@ public class Launcher_Options_Controller implements Initializable {
             optionsJVMArguments.setSelected(true);
             optionsJVMArgumentsInput.setDisable(false);
         }
-        
+
         if (!Launcher_Settings.selectedTheme.equals("")) {
             useThemeType.setSelected(true);
             themeType.setDisable(false);
             themeType.setValue(capitalize(Launcher_Settings.selectedTheme));
         }
-        
+
         if (Launcher_Settings.keepLauncherOpen == true) {
             optionsKeepLauncherOpen.setSelected(true);
         }
@@ -400,33 +431,37 @@ public class Launcher_Options_Controller implements Initializable {
 
     @FXML
     private void kt_optionsResolutionMin(KeyEvent event) {
-        if (!"0123456789".contains(event.getCharacter()) || optionsResolutionMin.getText().length() > 3) {
+        if (!event.getCharacter().matches("[0-9\b]")) {
             Toolkit.getDefaultToolkit().beep();
             event.consume();
+
         }
     }
 
     @FXML
     private void kt_optionsRamAllocationMin(KeyEvent event) {
-        if (!"0123456789".contains(event.getCharacter()) || optionsRamAllocationMin.getText().length() > 3) {
+        if (!event.getCharacter().matches("[0-9\b]")) {
             Toolkit.getDefaultToolkit().beep();
             event.consume();
+
         }
     }
 
     @FXML
     private void kt_optionsResolutionMax(KeyEvent event) {
-        if (!"0123456789".contains(event.getCharacter()) || optionsResolutionMax.getText().length() > 3) {
+        if (!event.getCharacter().matches("[0-9\b]")) {
             Toolkit.getDefaultToolkit().beep();
             event.consume();
+
         }
     }
 
     @FXML
     private void kt_optionsRamAllocationMax(KeyEvent event) {
-        if (!"0123456789".contains(event.getCharacter()) || optionsRamAllocationMax.getText().length() > 3) {
+        if (!event.getCharacter().matches("[0-9\b]")) {
             Toolkit.getDefaultToolkit().beep();
             event.consume();
+
         }
     }
 
@@ -446,11 +481,10 @@ public class Launcher_Options_Controller implements Initializable {
     private void _useThemeType(ActionEvent event) {
         if (useThemeType.isSelected()) {
             themeType.setDisable(false);
-            if (themeType.getValue() != null)
-            {
+            if (themeType.getValue() != null) {
                 Launcher_Settings.selectedTheme = themeType.getValue().toString().toLowerCase();
                 Launcher_Settings.userSettingsSave();
-            }  
+            }
         } else {
             themeType.setDisable(true);
             Launcher_Settings.selectedTheme = "";
@@ -460,5 +494,160 @@ public class Launcher_Options_Controller implements Initializable {
 
         Launcher_Settings.setTheme(gui_options.getScene());
         Launcher_Settings.setTheme(gui_main.getScene());
+    }
+
+    private void setToolTips() {
+        Image infoIMG = new Image(getClass().getResourceAsStream("/taglauncher_3/css/images/m_info.png"));
+
+        tt_keepLauncherOpen.setText(
+                ""
+                + "Keep The Launcher Open\n"
+                + "Keeps the launcher open after Minecraft has started.\n"
+        );
+        tt_keepLauncherOpen.setGraphic(new ImageView(infoIMG));
+
+        tt_customTheme.setText(
+                ""
+                + "Choose A Custom Theme\n"
+                + "Change the launchers theme to a diffrent color.\n"
+        );
+        tt_customTheme.setGraphic(new ImageView(infoIMG));
+
+        tt_resolution.setText(
+                ""
+                + "Set Minecraft's Resolution\n"
+                + "Set the height and width of the Minecraft client.\n"
+        );
+        tt_resolution.setGraphic(new ImageView(infoIMG));
+
+        tt_ramAllocation.setText(
+                ""
+                + "Set Minecraft's Ram Usage\n"
+                + "Set the minimum and maximum ram that the Minecraft client will use.\n"
+                + "WARNING: It's best to leave this option alone unless you know what you're doing. Altering this beyond what your computer can handle will cause Minecraft to not open.\n"
+        );
+        tt_ramAllocation.setGraphic(new ImageView(infoIMG));
+
+        tt_bypassBlacklist.setText(
+                ""
+                + "Bypass The Blacklist\n"
+                + "Let you bypass the EULA blacklist when enabled.\n"
+        );
+        tt_bypassBlacklist.setGraphic(new ImageView(infoIMG));
+
+        tt_selectVersion.setText(
+                ""
+                + "Select A Version\n"
+                + "Choose a version of Minecraft to download and install.\n"
+        );
+        tt_selectVersion.setGraphic(new ImageView(infoIMG));
+
+        tt_selectVersionInstall.setText(
+                ""
+                + "Install and Download\n"
+                + "Install and download the version of Minecraft selected.\n"
+        );
+        tt_selectVersionInstall.setGraphic(new ImageView(infoIMG));
+
+        tt_forceDownload.setText(
+                ""
+                + "Force Download\n"
+                + "When enabled, this tells the launcher to re-download all files for the selected version.\n"
+                + "This can fix issues with Minecraft not starting due to corruption or missing files.\n"
+        );
+        tt_forceDownload.setGraphic(new ImageView(infoIMG));
+
+        tt_javaVersion.setText(
+                ""
+                + "Java Location\n"
+                + "When enabled, this changes the location of where the launcher gets Java from.\n"
+                + "WARNING: It's best to leave this option alone unless you know what you're doing. Altering this may cause Minecraft to not open.\n"
+        );
+        tt_javaVersion.setGraphic(new ImageView(infoIMG));
+
+        tt_jvmArgs.setText(
+                ""
+                + "Extra JVM Arguments\n"
+                + "When enabled, this allows you to insert extra JVM arguments when Minecraft launches.\n"
+                + "WARNING: It's best to leave this option alone unless you know what you're doing. Altering this may cause Minecraft to not open.\n"
+        );
+        tt_jvmArgs.setGraphic(new ImageView(infoIMG));
+
+        tt_launcherVersion.setText(
+                ""
+                + "Current Launcher Version\n"
+                + "This is the current launcher version.\n"
+                + "Click to view the launcher credits.\n"
+        );
+        tt_launcherVersion.setGraphic(new ImageView(infoIMG));
+    }
+
+    @FXML
+    private void mc_launcherVersion(MouseEvent event) {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Minecraft Launcher - Credits");
+        alert.setHeaderText("So long, and thanks for all the fish.");
+        alert.setContentText(""
+                + "Minotar.net: API used for the Avatars.\n"
+                + "Mojang: A little thing called Minecraft.\n"
+                + "Ammar_Ahmad: The brains behind the code.\n"
+                + "Chalkie: Pressed 'compile' that one time.\n\n"
+                + "© TagCraftMC.com & TerraPrimal.com\n");
+        alert.show();
+    }
+
+    private void setTextBoxMax() {
+        optionsResolutionMin.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                    Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    if (optionsResolutionMin.getText().length() > 4) {
+                        optionsResolutionMin.setText(optionsResolutionMin.getText().substring(0, 4));
+                        //Toolkit.getDefaultToolkit().beep();
+                    }
+                }
+            }
+        });
+
+        optionsResolutionMax.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                    Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    if (optionsResolutionMax.getText().length() > 4) {
+                        optionsResolutionMax.setText(optionsResolutionMax.getText().substring(0, 4));
+                        //Toolkit.getDefaultToolkit().beep();
+                    }
+                }
+            }
+        });
+
+        optionsRamAllocationMin.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                    Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    if (optionsRamAllocationMin.getText().length() > 4) {
+                        optionsRamAllocationMin.setText(optionsRamAllocationMin.getText().substring(0, 4));
+                        //Toolkit.getDefaultToolkit().beep();
+                    }
+                }
+            }
+        });
+
+        optionsRamAllocationMax.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable,
+                    Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    if (optionsRamAllocationMax.getText().length() > 4) {
+                        optionsRamAllocationMax.setText(optionsRamAllocationMax.getText().substring(0, 4));
+                        //Toolkit.getDefaultToolkit().beep();
+                    }
+                }
+            }
+        });
     }
 }

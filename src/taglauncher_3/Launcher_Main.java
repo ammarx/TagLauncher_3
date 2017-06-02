@@ -41,6 +41,8 @@ public class Launcher_Main extends Application {
     public void start(Stage stage) throws Exception {
         Launcher_Settings.userSettingsLoad();
         
+        //Launcher_Main_Background.setBackgroundImages();
+        
         Parent root = FXMLLoader.load(getClass().getResource("gui/main/Launcher_Main_GUI.fxml"));
         Scene scene = new Scene(root);
         initApplicationSettings(stage, scene);
@@ -54,7 +56,7 @@ public class Launcher_Main extends Application {
         setApplicationMainStage(stage);
         
         stage.getIcons().add(new Image(Launcher_Main.class.getResourceAsStream("/taglauncher_3/css/images/icon.png" )));
-        stage.setTitle("The Primal Launcher - v0.8-alpha");
+        stage.setTitle("Minecraft Launcher");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
         stage.setMinWidth(450);        
@@ -73,16 +75,6 @@ public class Launcher_Main extends Application {
         scene.setOnMouseDragged(event -> {
             stage.setX(event.getScreenX() + xOffset);
             stage.setY(event.getScreenY() + yOffset);
-        });
-        
-        stage.setOnCloseRequest((WindowEvent we) -> {
-            for (int i = 0; i < 16; i++) {
-                System.out.println("Created by Ammar Ahmad.");
-                System.out.println("UI by Chalkie.");
-                System.out.println("© TagCraftMC.com & TerraPrimal.com");
-            }
-            stage.close();
-            System.exit(0);
         });
     }
 }
