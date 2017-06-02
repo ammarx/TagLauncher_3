@@ -355,7 +355,7 @@ public class Launcher_Main_Controller implements Initializable {
         }
 
         int randomBG = ThreadLocalRandom.current().nextInt(0, backgroundList.size());
-        mainBackground.setStyle("-fx-background-image: url('/taglauncher_3/css/images/" + backgroundList.get(randomBG) + ".png')");
+        mainBackground.setStyle("-fx-background-image: url('/taglauncher_3/css/images/" + backgroundList.get(randomBG) + ".jpg')");
 
         Timeline rotateBackground = new Timeline(new KeyFrame(Duration.seconds(10), new EventHandler<ActionEvent>() {
 
@@ -363,7 +363,7 @@ public class Launcher_Main_Controller implements Initializable {
             public void handle(ActionEvent event) {
                 int randomBG = ThreadLocalRandom.current().nextInt(0, backgroundList.size());
 
-                mainBackground.setStyle("-fx-background-image: url('/taglauncher_3/css/images/" + backgroundList.get(randomBG) + ".png')");
+                mainBackground.setStyle("-fx-background-image: url('/taglauncher_3/css/images/" + backgroundList.get(randomBG) + ".jpg')");
             }
         }));
         rotateBackground.setCycleCount(Timeline.INDEFINITE);
@@ -372,7 +372,7 @@ public class Launcher_Main_Controller implements Initializable {
 
     private void checkLatestVersion() {
         try {
-            URL versionLastesturl = new URL("https://raw.githubusercontent.com/ammarx/TagLauncher_3/GuiGetsFaceLift/_html_/latestVersion");
+            URL versionLastesturl = new URL("https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/latestVersion");
             URLConnection con = versionLastesturl.openConnection();
             con.setUseCaches(false); //had to as it was caching it.
             
@@ -380,7 +380,6 @@ public class Launcher_Main_Controller implements Initializable {
             String line;
             
             while ((line = in.readLine()) != null) {
-                System.out.print(line);
                 if (Launcher_Settings.launcherVersion.equals(line))
                 {
                     Platform.runLater(() -> {launcherStatus.setText("Status: Your launcher is up to date!");});   

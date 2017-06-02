@@ -59,7 +59,7 @@
                            <tooltip>
                               <Tooltip fx:id="tt_customTheme" prefWidth="300.0" text="Empty Tooltip" wrapText="true" />
                            </tooltip></RadioButton>
-                        <Label fx:id="launcherVersion" layoutX="339.0" layoutY="5.0" onMouseClicked="#mc_launcherVersion" text="Version: 0.00">
+                        <Label fx:id="launcherVersion" layoutX="330.0" layoutY="6.0" onMouseClicked="#mc_launcherVersion" text="Version: 0.00">
                            <font>
                               <Font size="8.0" />
                            </font>
