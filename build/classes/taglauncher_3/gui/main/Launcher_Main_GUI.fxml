@@ -59,15 +59,15 @@
                            <tooltip>
                               <Tooltip fx:id="tt_username" prefWidth="300.0" wrapText="true" />
                            </tooltip></TextField>
-                        <ComboBox id="version" fx:id="version" layoutX="25.0" layoutY="111.0" prefHeight="25.0" prefWidth="200.0" promptText="Select A Version" styleClass="root">
+                        <ComboBox id="version" fx:id="version" layoutX="25.0" layoutY="111.0" prefHeight="25.0" prefWidth="200.0" promptText="Select A Version">
                            <tooltip>
                               <Tooltip fx:id="tt_version" prefWidth="300.0" text="Empty Tooltip" wrapText="true" />
                            </tooltip></ComboBox>
-                        <Button id="launch" fx:id="launch" layoutX="135.0" layoutY="151.0" mnemonicParsing="false" onAction="#launchMineCraft" prefHeight="26.0" prefWidth="90.0" styleClass="root" text="Play">
+                        <Button id="launch" fx:id="launch" layoutX="135.0" layoutY="151.0" mnemonicParsing="false" onAction="#launchMineCraft" prefHeight="26.0" prefWidth="90.0" text="Play">
                            <tooltip>
                               <Tooltip fx:id="tt_play" prefWidth="300.0" wrapText="true" />
                            </tooltip></Button>
-                        <Button fx:id="options" layoutX="25.0" layoutY="152.0" mnemonicParsing="false" onAction="#launchOptions" prefHeight="25.0" prefWidth="90.0" styleClass="root" text="Options">
+                        <Button fx:id="options" layoutX="25.0" layoutY="152.0" mnemonicParsing="false" onAction="#launchOptions" prefHeight="25.0" prefWidth="90.0" text="Options">
                            <tooltip>
                               <Tooltip fx:id="tt_options" prefWidth="300.0" text="Empty Tooltip" wrapText="true" />
                            </tooltip></Button>

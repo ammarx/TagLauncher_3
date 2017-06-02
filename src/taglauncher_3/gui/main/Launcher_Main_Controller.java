@@ -6,6 +6,7 @@
 package taglauncher_3.gui.main;
 
 import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,6 +35,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Bounds;
+import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -41,6 +44,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
@@ -131,6 +135,20 @@ public class Launcher_Main_Controller implements Initializable {
 
     @FXML
     private void launchMineCraft(ActionEvent event) {
+        if (username.getText().equals(""))
+        {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Minecraft Launcher - Error");
+            alert.setHeaderText("A man needs a name...");
+            alert.setContentText("Please create a username prior to starting Minecraft.");
+            alert.initStyle(StageStyle.UTILITY);
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add("taglauncher_3/css/purple.css");
+            alert.show();
+            return;
+        }
+        
+        
         Launcher_Settings.playerUsername = username.getText();
         Launcher_Settings.playerVersion = version.getValue().toString();
         Launcher_Settings.userSettingsSave();
@@ -218,6 +236,9 @@ public class Launcher_Main_Controller implements Initializable {
                             alert.setTitle("Unable to start Minecraft!");
                             alert.setHeaderText("Version: " + (String) version.getValue() + " failed to initialize!");
                             alert.setContentText("The game failed to initialize as data corruption \nwas found! Press re-Download game with \n*Force Download* checked in the options menu.");
+                            alert.initStyle(StageStyle.UTILITY);
+                            DialogPane dialogPane = alert.getDialogPane();
+                            dialogPane.getStylesheets().add("taglauncher_3/css/purple.css");
                             alert.showAndWait();
                             API.dumpLogs();
                             username.setDisable(false);

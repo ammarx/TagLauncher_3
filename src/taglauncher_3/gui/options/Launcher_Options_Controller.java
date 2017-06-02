@@ -25,6 +25,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -33,7 +34,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import taglauncher_3.Launcher_Main;
 import taglauncher_3.Launcher_Settings;
 
@@ -274,6 +277,18 @@ public class Launcher_Options_Controller implements Initializable {
 
     @FXML
     private void _optionsSelectVersionInstall(ActionEvent event) {
+        if (optionsSelectVersion.getValue() == null || optionsSelectVersion.getValue().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Minecraft Launcher - Error");
+            alert.setHeaderText("Computer says no...");
+            alert.setContentText("Please select a version to install prior to installing.");
+            alert.initStyle(StageStyle.UTILITY);
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add("taglauncher_3/css/purple.css");
+            alert.show();
+            return;
+        }
+        
         optionsSelectVersionInstall.setDisable(true);
         optionsExit.setDisable(true);
         optionsClose.setDisable(true);
@@ -329,6 +344,9 @@ public class Launcher_Options_Controller implements Initializable {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
                             alert.setTitle("Download Complete!");
                             alert.setHeaderText(null);
+                            alert.initStyle(StageStyle.UTILITY);
+                            DialogPane dialogPane = alert.getDialogPane();
+                            dialogPane.getStylesheets().add("taglauncher_3/css/purple.css");
                             alert.setContentText("Version: " + (String) optionsSelectVersion.getValue() + " has been downloaded & installed!");
                             ;
                             optionStatus.setText("Status: " + Launcher_Settings.Status.IDLE);
@@ -588,6 +606,13 @@ public class Launcher_Options_Controller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Minecraft Launcher - Credits");
         alert.setHeaderText("So long, and thanks for all the fish.");
+//        WebView webView = new WebView();
+//        webView.getEngine().loadContent("<html>Pay attention, there are <b>HTML</b> tags, here.</html>");
+//        webView.setPrefSize(150, 60);
+//        alert.getDialogPane().setContent(webView);
+        alert.initStyle(StageStyle.UTILITY);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add("taglauncher_3/css/purple.css");
         alert.setContentText(""
                 + "Minotar.net: API used for the Avatars.\n"
                 + "Mojang: A little thing called Minecraft.\n"
