@@ -17,12 +17,9 @@ import java.util.concurrent.Executors;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -35,7 +32,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.web.WebView;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -144,11 +140,6 @@ public class Launcher_Options_Controller implements Initializable {
             return null;
         });
         executor1.shutdown();
-
-        for (Object ob : API.getInstalledVersionsList()) {
-            //AMMAR version.getItems().addAll(ob.toString());
-
-        }
 
         ExecutorService executor = Executors.newCachedThreadPool();
         executor.submit(new Callable<Object>() {
@@ -270,14 +261,6 @@ public class Launcher_Options_Controller implements Initializable {
 
     @FXML
     private void _optionsSelectVersion(ActionEvent event) {
-        try {
-            //versionType.setText(VersionHashTable.get((String) installversionList.getValue()));
-            //System.out.println(VersionHashTable.get((String) installversionList.getValue()));
-        } catch (Exception e) {
-            //System.out.println("abc");
-            //versionType.setText("Unknown");
-
-        }
     }
 
     @FXML
@@ -611,16 +594,13 @@ public class Launcher_Options_Controller implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Minecraft Launcher - Credits");
         alert.setHeaderText("So long, and thanks for all the fish.");
-//        WebView webView = new WebView();
-//        webView.getEngine().loadContent("<html>Pay attention, there are <b>HTML</b> tags, here.</html>");
-//        webView.setPrefSize(150, 60);
-//        alert.getDialogPane().setContent(webView);
         alert.initStyle(StageStyle.UTILITY);
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add("taglauncher_3/css/purple.css");
         alert.setContentText(""
                 + "Minotar.net: API used for the Avatars.\n"
                 + "Mojang: A little thing called Minecraft.\n"
+                + "maxd @ Github: Great dark Modena theme."
                 + "Ammar_Ahmad: The brains behind the code.\n"
                 + "Chalkie: Pressed 'compile' that one time.\n\n"
                 + "© TagCraftMC.com & TerraPrimal.com\n");
@@ -695,7 +675,6 @@ public class Launcher_Options_Controller implements Initializable {
             if (selectedFile != null) {
                 optionsJavaVersionInput.clear();
                 optionsJavaVersionInput.setText(selectedFile.getAbsolutePath());
-                //System.out.print("File selected: " + selectedFile.getAbsolutePath());
             }
         }
 
