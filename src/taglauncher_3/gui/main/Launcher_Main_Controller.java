@@ -282,7 +282,7 @@ public class Launcher_Main_Controller implements Initializable {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getIcons().add(new Image(Launcher_Main.class.getResourceAsStream("/taglauncher_3/css/images/icon.png" )));
+            stage.getIcons().add(new Image(Launcher_Main.class.getResourceAsStream("/taglauncher_3/css/images/app_icon_1.png" )));
             stage.setTitle("Minecraft Launcher - Options");
             Scene sceneOptions = new Scene(optionsGUI);
             stage.setMinWidth(400);        

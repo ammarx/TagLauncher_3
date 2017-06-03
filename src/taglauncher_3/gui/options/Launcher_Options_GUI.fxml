@@ -133,7 +133,7 @@
                            <tooltip>
                               <Tooltip fx:id="tt_jvmArgs" prefWidth="300.0" text="Empty Tooltip" wrapText="true" />
                            </tooltip></RadioButton>
-                        <TextField fx:id="optionsJavaVersionInput" disable="true" layoutX="139.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
+                        <TextField fx:id="optionsJavaVersionInput" disable="true" layoutX="139.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" onMousePressed="#mp_optionsJavaVersionInput" prefHeight="20.0" prefWidth="237.0" />
                         <TextField fx:id="optionsJVMArgumentsInput" disable="true" layoutX="139.0" layoutY="49.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
                         <RadioButton fx:id="optionsDebugMode" layoutX="297.0" layoutY="85.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#_optionsDebugMode" opacity="0.0" text="DebugMode" />
                      </children>

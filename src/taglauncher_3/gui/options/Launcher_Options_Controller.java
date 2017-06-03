@@ -6,6 +6,7 @@
 package taglauncher_3.gui.options;
 
 import java.awt.Toolkit;
+import java.io.File;
 import taglauncher_3.gui.main.Launcher_Main_Controller;
 import java.net.URL;
 import java.util.Hashtable;
@@ -35,6 +36,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
+import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import taglauncher_3.Launcher_Main;
@@ -233,6 +236,7 @@ public class Launcher_Options_Controller implements Initializable {
             optionsJavaVersionInput.setDisable(false);
         } else {
             optionsJavaVersionInput.setDisable(true);
+            optionsJavaVersionInput.setText("");
         }
     }
 
@@ -242,6 +246,7 @@ public class Launcher_Options_Controller implements Initializable {
             optionsJVMArgumentsInput.setDisable(false);
         } else {
             optionsJVMArgumentsInput.setDisable(true);
+            optionsJVMArgumentsInput.setText("");
         }
     }
 
@@ -674,5 +679,25 @@ public class Launcher_Options_Controller implements Initializable {
                 }
             }
         });
+    }
+
+    @FXML
+    private void mp_optionsJavaVersionInput(MouseEvent event) {
+
+        if (optionsJavaVersionInput.getText().equals("")) {
+
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Your Java Location");
+            fileChooser.getExtensionFilters().add(new ExtensionFilter("Java Version", "*.exe"));
+
+            File selectedFile = fileChooser.showOpenDialog(null);
+
+            if (selectedFile != null) {
+                optionsJavaVersionInput.clear();
+                optionsJavaVersionInput.setText(selectedFile.getAbsolutePath());
+                //System.out.print("File selected: " + selectedFile.getAbsolutePath());
+            }
+        }
+
     }
 }

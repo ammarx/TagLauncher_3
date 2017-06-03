@@ -55,7 +55,7 @@ public class Launcher_Main extends Application {
     {
         setApplicationMainStage(stage);
         
-        stage.getIcons().add(new Image(Launcher_Main.class.getResourceAsStream("/taglauncher_3/css/images/icon.png" )));
+        stage.getIcons().add(new Image(Launcher_Main.class.getResourceAsStream("/taglauncher_3/css/images/app_icon_1.png" )));
         stage.setTitle("Minecraft Launcher");
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
