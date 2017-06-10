@@ -293,15 +293,19 @@ public class Launcher_Main_Controller implements Initializable {
                 stage.setY(event_.getScreenY() + yOffset);
             });
             stage.setOnHiding(event_ -> {
-                if (Launcher_Settings.refreshVersionList == true) {
+                //if (Launcher_Settings.refreshVersionList == true) { //Just refesh it anyway.
                     tagapi_3.API_Interface API = new tagapi_3.API_Interface();
 
                     version.getItems().removeAll(version.getItems());
                     for (Object ob : API.getInstalledVersionsList()) {
                         version.getItems().addAll(ob.toString());
                     }
-                    version.setValue(Launcher_Settings.playerVersion);
-                }
+                    
+                    if (!Launcher_Settings.playerVersion.equals("-1"))
+                    {
+                        version.setValue(Launcher_Settings.playerVersion);
+                    }  
+                //}
             });
             stage.show();
         } catch (IOException ex) {
