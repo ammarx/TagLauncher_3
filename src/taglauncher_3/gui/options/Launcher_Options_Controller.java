@@ -670,7 +670,8 @@ public class Launcher_Options_Controller implements Initializable {
 
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Your Java Location");
-            fileChooser.getExtensionFilters().add(new ExtensionFilter("Java Version", "*.exe"));
+            //removed! because this will not work if you are on MAC or Linux.
+            //fileChooser.getExtensionFilters().add(new ExtensionFilter("Java Version", "*.exe"));
 
             File selectedFile = fileChooser.showOpenDialog(null);
 
