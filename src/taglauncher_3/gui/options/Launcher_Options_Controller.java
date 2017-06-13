@@ -32,6 +32,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -592,6 +593,7 @@ public class Launcher_Options_Controller implements Initializable {
     private void mc_launcherVersion(MouseEvent event) {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getDialogPane().getChildren().stream().filter(node -> node instanceof Label).forEach(node -> ((Label)node).setMinHeight(Region.USE_PREF_SIZE));
         alert.setTitle("Minecraft Launcher - Credits");
         alert.setHeaderText("So long, and thanks for all the fish.");
         alert.initStyle(StageStyle.UTILITY);
@@ -600,7 +602,7 @@ public class Launcher_Options_Controller implements Initializable {
         alert.setContentText(""
                 + "Minotar.net: API used for the Avatars.\n"
                 + "Mojang: A little thing called Minecraft.\n"
-                + "maxd @ Github: Great dark Modena theme."
+                + "maxd @ Github: Great dark Modena theme.\n"
                 + "Ammar_Ahmad: The brains behind the code.\n"
                 + "Chalkie: Pressed 'compile' that one time.\n\n"
                 + "© TagCraftMC.com & TerraPrimal.com\n");
