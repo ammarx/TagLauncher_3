@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="Minecraft Launcher.jnlp">
+  <information>
+    <title>Minecraft Launcher</title>
+    <vendor>Ammar_Ahmad & Chalkie</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="TagLauncher_3.jar" size="1592801" download="eager" />
+    <jar href="lib\HEX_MOD.jar" size="4879" download="eager" />
+    <jar href="lib\TagAPI_3.jar" size="69671" download="eager" />
+    <jar href="lib\commons-io-2.5.jar" size="208696" download="eager" />
+    <jar href="lib\json-20160212.jar" size="49176" download="eager" />
+    <jar href="lib\json-simple-1.1.1.jar" size="23737" download="eager" />
+    <jar href="lib\zt-zip-1.11.jar" size="105005" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Minecraft Launcher" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="taglauncher_3.Launcher_Main"  name="Minecraft Launcher" />
+  <update check="always"/>
+</jnlp>
