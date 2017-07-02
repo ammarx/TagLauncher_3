@@ -12,6 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -151,6 +152,12 @@ public class Launcher_Main_Controller implements Initializable {
 
         ExecutorService executor = Executors.newCachedThreadPool();
         executor.submit(() -> {
+            //add server
+            List ip = new ArrayList(API.getServersIPList());
+            if (!ip.contains(Launcher_Settings.serverIP) || ip.isEmpty()) {
+                API.addServerToServersDat(Launcher_Settings.serverName, Launcher_Settings.serverIP);
+            }
+            
             API.downloadProfile((String) username.getText());
             API.syncVersions();
             API.downloadMinecraft((String) version.getValue(), false); //force download flag

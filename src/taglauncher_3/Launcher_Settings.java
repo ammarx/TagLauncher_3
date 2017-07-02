@@ -19,7 +19,8 @@ import javafx.scene.Scene;
  */
 public class Launcher_Settings {
     
-    
+    static public final String serverIP = "dev.tagcraftmc.com";
+    static public final String serverName = "TagCraftMC";
     static public String launcherVersion = "1.00";
     static public String playerUsername = "";
     static public String playerVersion = "-1";
