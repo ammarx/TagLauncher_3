@@ -65,3 +65,5 @@ config\.properties
 nbproject/configs/
 
 dist/web-files/
+
+\.script\.js
