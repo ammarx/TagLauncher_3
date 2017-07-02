@@ -39,7 +39,6 @@ target/
 nbproject/private/
 build/
 nbbuild/
-dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
@@ -64,3 +63,5 @@ nbproject/genfiles\.properties
 config\.properties
 
 nbproject/configs/
+
+dist/web-files/
