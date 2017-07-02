@@ -13,6 +13,7 @@ tomcat
 *.dmg
 *.gz
 *.iso
+*.jar
 *.rar
 *.tar
 *.zip
@@ -39,6 +40,7 @@ target/
 nbproject/private/
 build/
 nbbuild/
+dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
@@ -52,4 +54,10 @@ nb-configuration.xml
 release.properties
 pom.xml.releaseBackup
 pom.xml.tag
-build-impl.xml
+nbproject/build-impl\.xml
+
+nbproject/jfx-impl\.xml
+
+nbproject/jfx-impl_backup\.xml
+
+nbproject/genfiles\.properties
