@@ -117,6 +117,10 @@ public class Launcher_Options_Controller implements Initializable {
     private Label launcherVersion;
     @FXML
     private Tooltip tt_launcherVersion;
+    @FXML
+    private RadioButton optionsSelectFastStart;
+    @FXML
+    private Tooltip tt_fastStartup;
 
     /**
      * Initializes the controller class.
@@ -343,7 +347,9 @@ public class Launcher_Options_Controller implements Initializable {
                             optionsExit.setDisable(false);
                             optionsClose.setDisable(false);
                             optionsSelectVersion.setDisable(false);
+                            optionsSelectFastStart.setSelected(false);
                             Launcher_Settings.refreshVersionList = true;
+                            Launcher_Settings.fastStartUp = false;
                             alert.showAndWait();
                             API.dumpLogs();
 
@@ -375,6 +381,7 @@ public class Launcher_Options_Controller implements Initializable {
     private void saveOptionsData() {
         Launcher_Settings.bypassBlacklist = optionsBypassBlacklist.isSelected();
         Launcher_Settings.keepLauncherOpen = optionsKeepLauncherOpen.isSelected();
+        Launcher_Settings.fastStartUp = optionsSelectFastStart.isSelected();
         Launcher_Settings.resolutionWidth = optionsResolutionMin.getText();
         Launcher_Settings.resolutionHeight = optionsResolutionMax.getText();
         Launcher_Settings.ramAllocationMin = optionsRamAllocationMin.getText();
@@ -409,6 +416,10 @@ public class Launcher_Options_Controller implements Initializable {
             optionsRamAllocationMax.setDisable(false);
         }
 
+        if (Launcher_Settings.fastStartUp == true) {
+            optionsSelectFastStart.setSelected(true);
+        }
+        
         if (Launcher_Settings.bypassBlacklist == true) {
             optionsBypassBlacklist.setSelected(true);
         }
@@ -535,6 +546,14 @@ public class Launcher_Options_Controller implements Initializable {
         );
         tt_ramAllocation.setGraphic(new ImageView(infoIMG));
 
+        tt_fastStartup.setText(
+                ""
+                + "Fast Startup\n"
+                + "Lets you bypass the integrity check when launching Minecraft.\n"
+                + "Should only be used if you're using vanilla minecraft or the mod doesn't need to download third party API/Files.\n"
+        );
+        tt_fastStartup.setGraphic(new ImageView(infoIMG));
+        
         tt_bypassBlacklist.setText(
                 ""
                 + "Bypass The Blacklist\n"
@@ -679,6 +698,17 @@ public class Launcher_Options_Controller implements Initializable {
                 optionsJavaVersionInput.clear();
                 optionsJavaVersionInput.setText(selectedFile.getAbsolutePath());
             }
+        }
+
+    }
+
+    @FXML
+    private void _optionsSelectFastStart(ActionEvent event) 
+    {
+        if (Launcher_Settings.fastStartUp == true) {
+            Launcher_Settings.fastStartUp = false;
+        } else {
+            Launcher_Settings.fastStartUp = true;
         }
 
     }

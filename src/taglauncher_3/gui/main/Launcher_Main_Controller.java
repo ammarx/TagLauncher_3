@@ -180,8 +180,14 @@ public class Launcher_Main_Controller implements Initializable {
             } else {
                 API.setVersionData("#AmmarBless");
             }
-
-            API.runMinecraft(username.getText(), (String) version.getValue());
+            
+            if (Launcher_Settings.fastStartUp) {
+                API.runMinecraft(username.getText(), (String) version.getValue(), true);
+            } else {
+                API.runMinecraft(username.getText(), (String) version.getValue(), false);
+            }
+            
+            
             return null;
         });
         executor.shutdown();

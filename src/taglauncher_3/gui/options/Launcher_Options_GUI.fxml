@@ -115,6 +115,11 @@
                            <tooltip>
                               <Tooltip fx:id="tt_forceDownload" prefWidth="300.0" text="Empty Tooltip" wrapText="true" />
                            </tooltip></RadioButton>
+                        <RadioButton fx:id="optionsSelectFastStart" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" onAction="#_optionsSelectFastStart" text="Fast Start">
+                           <tooltip>
+                              <Tooltip fx:id="tt_forceDownload1" prefWidth="300.0" text="Empty Tooltip" wrapText="true" />
+                           </tooltip>
+                        </RadioButton>
                      </children>
                   </Pane>
                   <Pane prefHeight="3.0" prefWidth="390.0" styleClass="top_title_bar" />
