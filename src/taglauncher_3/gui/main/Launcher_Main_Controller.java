@@ -58,7 +58,7 @@ public class Launcher_Main_Controller implements Initializable {
 
     private static Stage applicationOptionStage;
     ArrayList<String> backgroundList = new ArrayList<String>();
-    
+
     private double xOffset = 0;
     private double yOffset = 0;
     @FXML
@@ -124,8 +124,7 @@ public class Launcher_Main_Controller implements Initializable {
 
     @FXML
     private void launchMineCraft(ActionEvent event) {
-        if (username.getText().equals(""))
-        {
+        if (username.getText().equals("")) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Minecraft Launcher - Error");
             alert.setHeaderText("A man needs a name...");
@@ -136,8 +135,7 @@ public class Launcher_Main_Controller implements Initializable {
             alert.show();
             return;
         }
-        
-        
+
         Launcher_Settings.playerUsername = username.getText();
         Launcher_Settings.playerVersion = version.getValue().toString();
         Launcher_Settings.userSettingsSave();
@@ -157,10 +155,13 @@ public class Launcher_Main_Controller implements Initializable {
             if (!ip.contains(Launcher_Settings.serverIP) || ip.isEmpty()) {
                 API.addServerToServersDat(Launcher_Settings.serverName, Launcher_Settings.serverIP);
             }
-            
+
             API.downloadProfile((String) username.getText());
             API.syncVersions();
-            API.downloadMinecraft((String) version.getValue(), false); //force download flag
+
+            if (!Launcher_Settings.fastStartUp) { //NOT faststartup
+                API.downloadMinecraft((String) version.getValue(), false);
+            }
 
             API.setMinMemory(Integer.parseInt(Launcher_Settings.ramAllocationMin));
             API.setMemory(Integer.parseInt(Launcher_Settings.ramAllocationMax));
@@ -180,14 +181,13 @@ public class Launcher_Main_Controller implements Initializable {
             } else {
                 API.setVersionData("#AmmarBless");
             }
-            
+
             if (Launcher_Settings.fastStartUp) {
                 API.runMinecraft(username.getText(), (String) version.getValue(), true);
             } else {
                 API.runMinecraft(username.getText(), (String) version.getValue(), false);
             }
-            
-            
+
             return null;
         });
         executor.shutdown();
@@ -266,8 +266,7 @@ public class Launcher_Main_Controller implements Initializable {
     @FXML
     private void launchExit(ActionEvent event) {
         Launcher_Settings.playerUsername = username.getText();
-        if (version.getValue() != null)
-        {
+        if (version.getValue() != null) {
             Launcher_Settings.playerVersion = version.getValue().toString();
         }
         Launcher_Settings.userSettingsSave();
@@ -283,12 +282,12 @@ public class Launcher_Main_Controller implements Initializable {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.UNDECORATED);
-            stage.getIcons().add(new Image(Launcher_Main.class.getResourceAsStream("/taglauncher_3/css/images/app_icon_1.png" )));
+            stage.getIcons().add(new Image(Launcher_Main.class.getResourceAsStream("/taglauncher_3/css/images/app_icon_1.png")));
             stage.setTitle("Minecraft Launcher - Options");
             Scene sceneOptions = new Scene(optionsGUI);
-            stage.setMinWidth(400);        
+            stage.setMinWidth(400);
             stage.setMinHeight(500);
-            stage.setMaxWidth(400);        
+            stage.setMaxWidth(400);
             stage.setMaxHeight(500);
             stage.setResizable(false);
 
@@ -307,17 +306,16 @@ public class Launcher_Main_Controller implements Initializable {
             });
             stage.setOnHiding(event_ -> {
                 //if (Launcher_Settings.refreshVersionList == true) { //Just refesh it anyway.
-                    tagapi_3.API_Interface API = new tagapi_3.API_Interface();
+                tagapi_3.API_Interface API = new tagapi_3.API_Interface();
 
-                    version.getItems().removeAll(version.getItems());
-                    for (Object ob : API.getInstalledVersionsList()) {
-                        version.getItems().addAll(ob.toString());
-                    }
-                    
-                    if (!Launcher_Settings.playerVersion.equals("-1"))
-                    {
-                        version.setValue(Launcher_Settings.playerVersion);
-                    }  
+                version.getItems().removeAll(version.getItems());
+                for (Object ob : API.getInstalledVersionsList()) {
+                    version.getItems().addAll(ob.toString());
+                }
+
+                if (!Launcher_Settings.playerVersion.equals("-1")) {
+                    version.setValue(Launcher_Settings.playerVersion);
+                }
                 //}
             });
             stage.show();
@@ -343,15 +341,15 @@ public class Launcher_Main_Controller implements Initializable {
                 + "The name must be between 4 and 16 characters long and can only contain letters, numbers and underscores.\n"
         );
         tt_username.setGraphic(new ImageView(infoIMG));
-        
+
         tt_version.setText(
                 ""
                 + "Minecraft Version\n"
                 + "Select what version of minecraft you wish to play.\n"
                 + "You can download new versions via the options menu.\n"
         );
-        tt_version.setGraphic(new ImageView(infoIMG)); 
-        
+        tt_version.setGraphic(new ImageView(infoIMG));
+
         tt_options.setText(
                 ""
                 + "The Options Menu\n"
@@ -363,7 +361,7 @@ public class Launcher_Main_Controller implements Initializable {
                 + "Play Minecraft\n"
                 + "Launches Minecraft with the version and settings you have chosen.\n"
         );
-        tt_play.setGraphic(new ImageView(infoIMG));  
+        tt_play.setGraphic(new ImageView(infoIMG));
     }
 
     @FXML
@@ -374,10 +372,10 @@ public class Launcher_Main_Controller implements Initializable {
 
         }
     }
-     
-    private void runBackground() {        
-        for(int i =  1; i < 11; i++){
-             backgroundList.add("background_" + i);
+
+    private void runBackground() {
+        for (int i = 1; i < 11; i++) {
+            backgroundList.add("background_" + i);
         }
 
         int randomBG = ThreadLocalRandom.current().nextInt(0, backgroundList.size());
@@ -401,30 +399,35 @@ public class Launcher_Main_Controller implements Initializable {
             URL versionLastesturl = new URL("https://raw.githubusercontent.com/ammarx/TagLauncher_3/master/_html_/latestVersion");
             URLConnection con = versionLastesturl.openConnection();
             con.setUseCaches(false); //had to as it was caching it.
-            
+
             BufferedReader in = new BufferedReader(new InputStreamReader(versionLastesturl.openStream()));
             String line;
-            
+
             while ((line = in.readLine()) != null) {
-                if (Launcher_Settings.launcherVersion.equals(line))
-                {
-                    Platform.runLater(() -> {launcherStatus.setText("Status: Your launcher is up to date!");});   
-                }
-                else
-                {
-                   Platform.runLater(() -> {launcherStatus.setText("Status: Your launcher is outdated!");});  
+                if (Launcher_Settings.launcherVersion.equals(line)) {
+                    Platform.runLater(() -> {
+                        launcherStatus.setText("Status: Your launcher is up to date!");
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        launcherStatus.setText("Status: Your launcher is outdated!");
+                    });
                 }
             }
             in.close();
 
         } catch (MalformedURLException e) {
-            Platform.runLater(() -> {launcherStatus.setText("Status: Unable to check for latest version!");});
-        } catch (IOException e) {                        
-            Platform.runLater(() -> {launcherStatus.setText("Status: Unable to check for latest version!");});
-            
+            Platform.runLater(() -> {
+                launcherStatus.setText("Status: Unable to check for latest version!");
+            });
+        } catch (IOException e) {
+            Platform.runLater(() -> {
+                launcherStatus.setText("Status: Unable to check for latest version!");
+            });
+
         }
     }
-    
+
     private void setTextBoxMax() {
         username.lengthProperty().addListener(new ChangeListener<Number>() {
             @Override

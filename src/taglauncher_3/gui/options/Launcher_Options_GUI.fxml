@@ -117,7 +117,7 @@
                            </tooltip></RadioButton>
                         <RadioButton fx:id="optionsSelectFastStart" layoutX="10.0" layoutY="77.0" mnemonicParsing="false" onAction="#_optionsSelectFastStart" text="Fast Start">
                            <tooltip>
-                              <Tooltip fx:id="tt_forceDownload1" prefWidth="300.0" text="Empty Tooltip" wrapText="true" />
+                              <Tooltip fx:id="tt_fastStartup" prefWidth="300.0" text="Empty Tooltip" wrapText="true" />
                            </tooltip>
                         </RadioButton>
                      </children>
