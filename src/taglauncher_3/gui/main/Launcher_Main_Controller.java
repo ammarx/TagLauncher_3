@@ -167,9 +167,7 @@ public class Launcher_Main_Controller implements Initializable {
             API.setMemory(Integer.parseInt(Launcher_Settings.ramAllocationMax));
             API.setHeight(Integer.parseInt(Launcher_Settings.resolutionHeight));
             API.setWidth(Integer.parseInt(Launcher_Settings.resolutionWidth));
-            if (Launcher_Settings.bypassBlacklist == true) {
-                API.injectNetty();
-            }
+            
             if (!Launcher_Settings.javaPath.equals("")) {
                 API.setJavaPath(Launcher_Settings.javaPath);
             }
@@ -181,11 +179,12 @@ public class Launcher_Main_Controller implements Initializable {
             } else {
                 API.setVersionData("#AmmarBless");
             }
-
+            
+            Boolean nettyPatch = Launcher_Settings.bypassBlacklist;
             if (Launcher_Settings.fastStartUp) {
-                API.runMinecraft(username.getText(), (String) version.getValue(), false);
+                API.runMinecraft(username.getText(), (String) version.getValue(), false, nettyPatch);
             } else {
-                API.runMinecraft(username.getText(), (String) version.getValue(), true);
+                API.runMinecraft(username.getText(), (String) version.getValue(), true, nettyPatch);
             }
 
             return null;
