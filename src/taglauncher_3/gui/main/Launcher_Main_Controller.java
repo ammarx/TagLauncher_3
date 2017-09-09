@@ -183,9 +183,9 @@ public class Launcher_Main_Controller implements Initializable {
             }
 
             if (Launcher_Settings.fastStartUp) {
-                API.runMinecraft(username.getText(), (String) version.getValue(), true);
-            } else {
                 API.runMinecraft(username.getText(), (String) version.getValue(), false);
+            } else {
+                API.runMinecraft(username.getText(), (String) version.getValue(), true);
             }
 
             return null;
