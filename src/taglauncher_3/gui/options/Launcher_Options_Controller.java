@@ -273,7 +273,7 @@ public class Launcher_Options_Controller implements Initializable {
         if (optionsSelectVersion.getValue() == null || optionsSelectVersion.getValue().equals("")) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Minecraft Launcher - Error");
-            alert.setHeaderText("Computer says no...");
+            alert.setHeaderText("Invaild selection.");
             alert.setContentText("Please select a version to install prior to installing.");
             alert.initStyle(StageStyle.UTILITY);
             DialogPane dialogPane = alert.getDialogPane();
@@ -335,8 +335,8 @@ public class Launcher_Options_Controller implements Initializable {
                         Platform.runLater(() -> {
                             optionStatus.setText("Status: " + Launcher_Settings.Status.DOWNLOAD_COMPLETE);
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setTitle("Download Complete!");
-                            alert.setHeaderText(null);
+                            alert.setTitle("Minecraft Launcher - Success");
+                            alert.setHeaderText("Download Complete.");
                             alert.initStyle(StageStyle.UTILITY);
                             DialogPane dialogPane = alert.getDialogPane();
                             dialogPane.getStylesheets().add("taglauncher_3/css/purple.css");

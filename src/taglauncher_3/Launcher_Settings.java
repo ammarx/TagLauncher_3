@@ -21,9 +21,10 @@ public class Launcher_Settings {
     
     static public final String serverIP = "mc.terraprimal.com";
     static public final String serverName = "Terra Primal";
-    static public String launcherVersion = "1.00";
+    static public String launcherVersion = "1.25";
     static public String playerUsername = "";
     static public String playerVersion = "-1";
+    static public boolean firstStart = true;
     static public boolean refreshVersionList = false;
     static public boolean bypassBlacklist = true;
     static public boolean keepLauncherOpen = false;
@@ -144,6 +145,7 @@ public class Launcher_Settings {
             prop.setProperty("username", Launcher_Settings.playerUsername);
             prop.setProperty("version", Launcher_Settings.playerVersion);
             prop.setProperty("theme", Launcher_Settings.selectedTheme);
+            prop.setProperty("firststart", String.valueOf(Launcher_Settings.firstStart));
             prop.setProperty("faststartup", String.valueOf(Launcher_Settings.fastStartUp));
             prop.setProperty("bypassblacklist", String.valueOf(Launcher_Settings.bypassBlacklist));
             prop.setProperty("keeplauncheropen", String.valueOf(Launcher_Settings.keepLauncherOpen));
@@ -186,6 +188,11 @@ public class Launcher_Settings {
             if (prop.getProperty("version") != null)
             {
                 Launcher_Settings.playerVersion = prop.getProperty("version");  
+            }
+            
+            if (prop.getProperty("firststart") != null)
+            {
+                Launcher_Settings.firstStart = Boolean.parseBoolean(prop.getProperty("firststart"));
             }
             
             if (prop.getProperty("faststartup") != null)

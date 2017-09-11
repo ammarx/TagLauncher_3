@@ -14,9 +14,13 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
@@ -26,6 +30,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -120,14 +125,39 @@ public class Launcher_Main_Controller implements Initializable {
                 version.setValue(Launcher_Settings.playerVersion);
             }
         }
+        
+        if (Launcher_Settings.firstStart)
+        {
+            showFirstTimeMessage();
+            Launcher_Settings.firstStart = false;
+            Launcher_Settings.userSettingsSave();
+        }
     }
 
+    public void showFirstTimeMessage()
+    {
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Minecraft Launcher - Welcome");
+            alert.setHeaderText("Greetings Player...");
+            alert.setContentText(""
+                    + "It looks like this is your first time using our launcher and we wanted to provide you with some help.\n\n"
+                    + "By default, the launcher doesn't come with any versions of Minecraft installed so you will need to download the version you wish to play via the options menu.\n\n"
+                    + "Once in the options menu, click the dropdown menu under the Version Settings title and choose the version you want. When you have chosen, click the download button and wait for the launcher to download all the necessary files.");
+            alert.initStyle(StageStyle.UTILITY);
+            DialogPane dialogPane = alert.getDialogPane();
+            dialogPane.getStylesheets().add("taglauncher_3/css/purple.css");
+            Stage stage = (Stage) dialogPane.getScene().getWindow();
+            stage.setAlwaysOnTop(true);
+            stage.toFront();
+            alert.show();
+    }
+    
     @FXML
     private void launchMineCraft(ActionEvent event) {
         if (username.getText().equals("")) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Minecraft Launcher - Error");
-            alert.setHeaderText("A man needs a name...");
+            alert.setHeaderText("A username is required.");
             alert.setContentText("Please create a username prior to starting Minecraft.");
             alert.initStyle(StageStyle.UTILITY);
             DialogPane dialogPane = alert.getDialogPane();
@@ -233,7 +263,7 @@ public class Launcher_Main_Controller implements Initializable {
                             //STATUS status.setText(API.getLog());
                             launcherStatus.setText("Status: Error. Minecraft file corruption detected!");
                             Alert alert = new Alert(AlertType.ERROR);
-                            alert.setTitle("Unable to start Minecraft!");
+                            alert.setTitle("Minecraft Launcher - Error");
                             alert.setHeaderText("Version: " + (String) version.getValue() + " failed to initialize!");
                             alert.setContentText("The game failed to initialize as data corruption \nwas found! Press re-Download game with \n*Force Download* checked in the options menu.");
                             alert.initStyle(StageStyle.UTILITY);
@@ -409,7 +439,7 @@ public class Launcher_Main_Controller implements Initializable {
                     });
                 } else {
                     Platform.runLater(() -> {
-                        launcherStatus.setText("Status: Your launcher is outdated!");
+                        launcherStatus.setText("Status: Your launcher is outdated! Please update it.");
                     });
                 }
             }
