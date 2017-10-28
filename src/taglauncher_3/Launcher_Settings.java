@@ -21,7 +21,7 @@ public class Launcher_Settings {
     
     static public final String serverIP = "mc.terraprimal.com";
     static public final String serverName = "Terra Primal";
-    static public String launcherVersion = "1.25";
+    static public String launcherVersion = "1.30";
     static public String playerUsername = "";
     static public String playerVersion = "-1";
     static public boolean firstStart = true;
