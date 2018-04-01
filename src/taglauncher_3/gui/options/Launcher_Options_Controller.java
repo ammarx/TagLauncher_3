@@ -121,6 +121,8 @@ public class Launcher_Options_Controller implements Initializable {
     private RadioButton optionsSelectFastStart;
     @FXML
     private Tooltip tt_fastStartup;
+    @FXML
+    private Tooltip tt_debugMode;
 
     /**
      * Initializes the controller class.
@@ -611,6 +613,13 @@ public class Launcher_Options_Controller implements Initializable {
                 + "Click to view the launcher credits.\n"
         );
         tt_launcherVersion.setGraphic(new ImageView(infoIMG));
+        
+        tt_debugMode.setText(
+                ""
+                + "Debug Mode\n"
+                + "When enabled, this tells the launcher to output raw logs in the logger.\n"
+        );
+        tt_debugMode.setGraphic(new ImageView(infoIMG));
     }
 
     @FXML
