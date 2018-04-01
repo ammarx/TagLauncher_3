@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taglauncher_3.gui.options.Launcher_Options_Controller">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.131" xmlns:fx="http://javafx.com/fxml/1" fx:controller="taglauncher_3.gui.options.Launcher_Options_Controller">
    <children>
       <BorderPane prefHeight="500.0" prefWidth="400.0">
          <top>
@@ -140,7 +140,7 @@
                            </tooltip></RadioButton>
                         <TextField fx:id="optionsJavaVersionInput" disable="true" layoutX="139.0" layoutY="24.0" maxHeight="20.0" minHeight="20.0" onMousePressed="#mp_optionsJavaVersionInput" prefHeight="20.0" prefWidth="237.0" />
                         <TextField fx:id="optionsJVMArgumentsInput" disable="true" layoutX="139.0" layoutY="49.0" maxHeight="20.0" minHeight="20.0" prefHeight="20.0" prefWidth="237.0" />
-                        <RadioButton fx:id="optionsDebugMode" layoutX="297.0" layoutY="85.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#_optionsDebugMode" opacity="0.0" text="DebugMode" />
+                        <RadioButton fx:id="optionsDebugMode" layoutX="10.0" layoutY="75.0" mnemonicParsing="false" onAction="#_optionsDebugMode" text="Debug Mode" />
                      </children>
                   </Pane>
                </children>

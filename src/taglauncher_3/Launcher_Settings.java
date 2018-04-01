@@ -155,6 +155,7 @@ public class Launcher_Settings {
             prop.setProperty("ramAllocationmax", Launcher_Settings.ramAllocationMax);
             prop.setProperty("javapath", Launcher_Settings.javaPath);
             prop.setProperty("jvmarguments", Launcher_Settings.jvmArguments);
+            prop.setProperty("debugMode", String.valueOf(Launcher_Settings.showDebugStatus));
             prop.store(output, null);
 
         } catch (IOException io) {
@@ -238,6 +239,11 @@ public class Launcher_Settings {
             if (prop.getProperty("jvmarguments") != null)
             {
               Launcher_Settings.jvmArguments = prop.getProperty("jvmarguments");  
+            }
+            
+            if (prop.getProperty("debugMode") != null)
+            {
+                Launcher_Settings.showDebugStatus = Boolean.parseBoolean(prop.getProperty("debugMode"));
             }
             
             if (prop.getProperty("theme") != null)

@@ -224,20 +224,26 @@ public class Launcher_Main_Controller implements Initializable {
         Thread t = new Thread(() -> {
             while (true) {
                 try {
-                    if (API.getLog().startsWith("[dl] DOWNLOADING...")) {
+                    if (Launcher_Settings.showDebugStatus == true) {
                         Platform.runLater(() -> {
-                            launcherStatus.setText("Status: Checking installed " + Launcher_Settings.playerVersion + " files.");
+                            launcherStatus.setText(API.getLog());
                         });
-                    }
-                    if (API.getLog().startsWith("[rl] KEY:")) {
-                        Platform.runLater(() -> {
-                            launcherStatus.setText("Status: Preparing to start Minecraft.");
-                        });
-                    }
-                    if (API.getLog().startsWith("[rl] Starting")) {
-                        Platform.runLater(() -> {
-                            launcherStatus.setText("Status: Starting Minecraft " + Launcher_Settings.playerVersion + ".");
-                        });
+                    } else {
+                        if (API.getLog().startsWith("[dl] DOWNLOADING...")) {
+                            Platform.runLater(() -> {
+                                launcherStatus.setText("Status: Checking installed " + Launcher_Settings.playerVersion + " files.");
+                            });
+                        }
+                        if (API.getLog().startsWith("[rl] KEY:")) {
+                            Platform.runLater(() -> {
+                                launcherStatus.setText("Status: Preparing to start Minecraft.");
+                            });
+                        }
+                        if (API.getLog().startsWith("[rl] Starting")) {
+                            Platform.runLater(() -> {
+                                launcherStatus.setText("Status: Starting Minecraft " + Launcher_Settings.playerVersion + ".");
+                            });
+                        }
                     }
 
                     Thread.sleep(10);

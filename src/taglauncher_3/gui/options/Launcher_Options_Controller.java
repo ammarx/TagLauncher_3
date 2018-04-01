@@ -388,7 +388,7 @@ public class Launcher_Options_Controller implements Initializable {
         Launcher_Settings.ramAllocationMax = optionsRamAllocationMax.getText();
         Launcher_Settings.javaPath = optionsJavaVersionInput.getText();
         Launcher_Settings.jvmArguments = optionsJVMArgumentsInput.getText();
-
+        Launcher_Settings.showDebugStatus = optionsDebugMode.isSelected();
         Launcher_Settings.userSettingsSave();
     }
 
@@ -423,7 +423,11 @@ public class Launcher_Options_Controller implements Initializable {
         if (Launcher_Settings.bypassBlacklist == true) {
             optionsBypassBlacklist.setSelected(true);
         }
-
+        
+        if (Launcher_Settings.showDebugStatus == true) {
+            optionsDebugMode.setSelected(true);
+        }
+        
         optionsJavaVersionInput.setText(Launcher_Settings.javaPath);
         if (!Launcher_Settings.javaPath.equals("")) {
             optionsJavaVersion.setSelected(true);
@@ -445,6 +449,7 @@ public class Launcher_Options_Controller implements Initializable {
         if (Launcher_Settings.keepLauncherOpen == true) {
             optionsKeepLauncherOpen.setSelected(true);
         }
+        
     }
 
     @FXML
