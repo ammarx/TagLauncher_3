@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="TagLauncher_3.jar" size="1594476" download="eager" />
+    <jar href="TagLauncher_3.jar" size="1595842" download="eager" />
     <jar href="lib\HEX_MOD.jar" size="4879" download="eager" />
     <jar href="lib\MoonLakeNBT-1.0.1.jar" size="29142" download="eager" />
     <jar href="lib\TagAPI_3.jar" size="77420" download="eager" />
